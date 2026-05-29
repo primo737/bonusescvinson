@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your portal. AI Hour Presents: Claude for Founders</title>
+  <meta name="description" content="Your seat is locked. Track your shares, unlock bonuses, and join the live workshop here.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. NEWSPAPER MASTHEAD NAV -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-left">
+        <strong>Your portal</strong><br>
+        Vol. 03 &middot; Cohort 03
+      </div>
+      <a class="masthead-center" href="index.html">
+        <span class="mark">A</span>
+        AI Hour <em>presents</em>
+      </a>
+      <div class="masthead-right">
+        <strong>You're in</strong>
+        Saturday &middot; June 13
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. PORTAL HERO -->
+  <section class="portal-hero">
+    <div class="portal-hero-inner">
+      <div class="portal-greeting">Hi <span id="member-name">there</span> &middot; You're locked in</div>
+      <h1>One Saturday between you and <em>Claude actually working</em> for your business.</h1>
+    </div>
+  </section>
+
+  <!-- 3. PORTAL GRID: Zoom card + Referral progress -->
+  <section class="portal-grid">
+
+    <!-- Zoom join card -->
+    <div class="zoom-card">
+      <div class="zoom-status"><span class="dot"></span> Doors open soon</div>
+      <h2>Live in <em>Zoom</em> on Saturday.</h2>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit"><div class="countdown-num" id="cdDays">--</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cdHrs">--</div><div class="countdown-label">Hrs</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cdMins">--</div><div class="countdown-label">Mins</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cdSecs">--</div><div class="countdown-label">Secs</div></div>
+      </div>
+
+      <a href="live.html" class="zoom-btn">
+        Join the workshop
+        <span>&rarr;</span>
+      </a>
+
+      <div class="zoom-meta">
+        Saturday, June 13 &middot; 2:00 PM Manila
+        <strong>Zoom link revealed 15 minutes before doors open.</strong>
+      </div>
+    </div>
+
+    <!-- Referral progress card -->
+    <div class="ref-card">
+      <div class="ref-head">
+        <span class="ref-eyebrow">Your shares</span>
+      </div>
+      <div class="ref-count">
+        <span id="ref-count-num">2</span><small>of 10</small>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="ref-bar" style="width: 20%;"></div>
+      </div>
+      <div class="progress-meta">
+        <span>0</span><span>10 unlocks the top spot</span>
+      </div>
+
+      <div class="tier-mini">
+        <div class="tier-mini-item unlocked">
+          <div class="tier-mini-num">1</div>
+          <div class="tier-mini-text">The Replay <small>Full 4-hour recording</small></div>
+        </div>
+        <div class="tier-mini-item">
+          <div class="tier-mini-num">3</div>
+          <div class="tier-mini-text">The Prompt Pack <small>Every prompt Cris runs</small></div>
+        </div>
+        <div class="tier-mini-item">
+          <div class="tier-mini-num">5</div>
+          <div class="tier-mini-text">The Project Template <small>Drop-in for your business</small></div>
+        </div>
+        <div class="tier-mini-item">
+          <div class="tier-mini-num">10</div>
+          <div class="tier-mini-text">Top spot &middot; live award <small>Book + 30-min session</small></div>
+        </div>
+      </div>
+
+      <a href="thanks.html#share" class="share-again">
+        Share again to unlock more
+        <span>&rarr;</span>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- 4. LEADERBOARD -->
+  <section class="portal-section">
+    <div class="portal-section-head">
+      <span class="eyebrow">The leaderboard</span>
+      <h3>Top founders sharing <em>this week</em>.</h3>
+    </div>
+
+    <div class="leaderboard">
+      <div class="leaderboard-row">
+        <div class="lb-rank top">01</div>
+        <div class="lb-name">Royce<small>Community Builder &middot; Davao</small></div>
+        <div class="lb-count"><strong>12</strong> shares</div>
+        <div class="lb-badge">Top spot unlocked</div>
+      </div>
+      <div class="leaderboard-row">
+        <div class="lb-rank top">02</div>
+        <div class="lb-name">BaylanOlera<small>Coach &middot; Cebu</small></div>
+        <div class="lb-count"><strong>8</strong> shares</div>
+        <div class="lb-badge">Project template unlocked</div>
+      </div>
+      <div class="leaderboard-row">
+        <div class="lb-rank">03</div>
+        <div class="lb-name">Jam<small>YouTuber &middot; Manila</small></div>
+        <div class="lb-count"><strong>6</strong> shares</div>
+        <div class="lb-badge">Project template unlocked</div>
+      </div>
+      <div class="leaderboard-row you">
+        <div class="lb-rank">14</div>
+        <div class="lb-name">You<small>Your spot &middot; right now</small></div>
+        <div class="lb-count"><strong>2</strong> shares</div>
+        <div class="lb-badge">Replay unlocked</div>
+      </div>
+      <div class="leaderboard-row">
+        <div class="lb-rank">15</div>
+        <div class="lb-name">Jamrell<small>Strategist &middot; Cebu</small></div>
+        <div class="lb-count"><strong>1</strong> share</div>
+        <div class="lb-badge">Replay unlocked</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SCHEDULE -->
+  <section class="portal-section">
+    <div class="portal-section-head">
+      <span class="eyebrow">Saturday schedule</span>
+      <h3>Four hours. <em>Four shifts</em>.</h3>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule-card">
+        <div class="schedule-time">2:00 &middot; Bloc 01</div>
+        <h4 class="schedule-bloc">Meet <em>Claude</em></h4>
+        <p class="schedule-desc">Stop using Claude as a chatbot. Start using it as a thinking partner.</p>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-time">3:00 &middot; Bloc 02</div>
+        <h4 class="schedule-bloc">Your first <em>workspace</em></h4>
+        <p class="schedule-desc">Projects and Artifacts, live, on your real business.</p>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-time">4:00 &middot; Bloc 03</div>
+        <h4 class="schedule-bloc">Skills, tools, <em>research</em></h4>
+        <p class="schedule-desc">A Skill that runs every week. Tools plugged in. Deep research on demand.</p>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-time">5:00 &middot; Bloc 04</div>
+        <h4 class="schedule-bloc">Claude in action <em>+ next step</em></h4>
+        <p class="schedule-desc">Three use cases you can copy this week. Live awards at the end.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHAT TO BRING -->
+  <section class="portal-section">
+    <div class="portal-section-head">
+      <span class="eyebrow">For the day</span>
+      <h3>Bring these <em>three things</em>.</h3>
+    </div>
+
+    <div class="bring">
+      <div class="bring-card">
+        <h4>One</h4>
+        <p>Your <em>laptop</em>, charged, with charger nearby.</p>
+      </div>
+      <div class="bring-card">
+        <h4>Two</h4>
+        <p>One real <em>bottleneck</em> you have been stuck on.</p>
+      </div>
+      <div class="bring-card">
+        <h4>Three</h4>
+        <p>One real <em>asset</em> you want shipped this week.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. NEWSPAPER FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        Vol. 03 &middot; Your portal
+      </div>
+      <div class="footer-center">
+        AI Hour <em>presents</em>
+      </div>
+      <div class="footer-right">
+        Need help? <a href="mailto:hello@aihour.ph" style="color: var(--c-primary);">Email us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown to Saturday, June 13 2026, 2:00 PM Manila (UTC+8 = 06:00 UTC)
+    const target = new Date('2026-06-13T06:00:00Z').getTime();
+    function tick() {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('cdDays').textContent = pad(d);
+      document.getElementById('cdHrs').textContent = pad(h);
+      document.getElementById('cdMins').textContent = pad(m);
+      document.getElementById('cdSecs').textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // Member name from ?name= URL param (placeholder for GHL magic-link wiring)
+    const params = new URLSearchParams(location.search);
+    const name = params.get('name');
+    if (name) document.getElementById('member-name').textContent = name;
+
+    // Referral count from ?shares= URL param (placeholder for GHL backend)
+    const shares = parseInt(params.get('shares'), 10);
+    if (!isNaN(shares)) {
+      document.getElementById('ref-count-num').textContent = shares;
+      const pct = Math.min(100, (shares / 10) * 100);
+      document.getElementById('ref-bar').style.width = pct + '%';
+      // Update unlock states
+      document.querySelectorAll('.tier-mini-item').forEach((item, i) => {
+        const thresholds = [1, 3, 5, 10];
+        if (shares >= thresholds[i]) item.classList.add('unlocked');
+        else item.classList.remove('unlocked');
+      });
+    }
+  </script>
+
+  <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
+</body>
+</html>

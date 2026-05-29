@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reserve Your F2F Seat — AI Hour Presents: Claude for Founders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-name"><strong>AI Hour</strong> Presents</span>
+      </a>
+      <a class="nav-cta" href="thanks.html">&larr; Back to confirmation</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: left; margin-left: 0;">
+        <span class="upsell-tag" style="background: var(--warm-soft); color: var(--warm); margin-bottom: 12px;">F2F Davao &middot; &#8369;1,500</span>
+        <h2>Be in the room. Build with Cris in front of you.</h2>
+        <p style="font-size: 17px;">You know yourself. At home, you scroll. In the room, you build. This is the room. Twenty seats, a table you can spread out on, eye contact with Cris, and Davao founders building the same kind of business as you, two chairs away.</p>
+        <div class="seat-counter" id="seatCounter" style="margin-top: 16px; font-size: 14px;">
+          <span class="seat-dot"></span> <span id="seatsLeft">14</span> of 20 seats left &middot; both previous cohorts sold out
+        </div>
+      </div>
+
+      <div class="checkout-grid">
+
+        <!-- LEFT: photo + details -->
+        <div>
+          <div style="height: 280px; border-radius: var(--radius-md); background: linear-gradient(180deg, rgba(15,15,26,0) 30%, rgba(15,15,26,0.55) 100%), url('assets/photos/DSCF4885.JPG') center / cover no-repeat; margin-bottom: 32px;"></div>
+
+          <h3 style="margin-bottom: 16px;">What being in the room actually gets you</h3>
+          <div class="outcomes" style="margin-top: 0; grid-template-columns: 1fr;">
+            <div class="outcome">
+              <span class="outcome-num">01</span>
+              <h3>Four hours where you actually finish the work</h3>
+              <p>Same venue as the May 16 cohort. Power outlets, fast wifi, a table you can spread out on. The kind of room where you cannot half-do it because the person next to you is shipping theirs.</p>
+            </div>
+            <div class="outcome">
+              <span class="outcome-num">02</span>
+              <h3>Eye-contact answers on your real business</h3>
+              <p>Online Q&A is good. Eye-contact Q&A is different. Ask the question you would not type. Get a direct answer with Cris pulling up your actual offer, your actual numbers, on the screen.</p>
+            </div>
+            <div class="outcome">
+              <span class="outcome-num">03</span>
+              <h3>Real food. Real coffee. No hangry hour.</h3>
+              <p>Snacks throughout. A full meal during the workshop. You do not leave to eat, you do not lose momentum, and the food is the kind people come back for.</p>
+            </div>
+            <div class="outcome">
+              <span class="outcome-num">04</span>
+              <h3>Three Davao founders you would not have met otherwise</h3>
+              <p>Built-in structured intros at lunch and after. We make sure you leave with at least three connections in Davao building with AI right now. Not "let's catch up sometime." Real contacts you can text Monday.</p>
+            </div>
+            <div class="outcome">
+              <span class="outcome-num">05</span>
+              <h3>Everything in VIP, plus the room</h3>
+              <p>You also get the recording, the copy-paste prompt pack, the Project template, and lifetime access. F2F is VIP plus a chair, food, and the people. Same digital deliverables, more in-person.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: payment -->
+        <aside class="checkout-summary">
+          <h3>Order summary</h3>
+          <div class="summary-line"><span>F2F Davao seat (1 of 20)</span><span>&#8369;1,500.00</span></div>
+          <div class="summary-line"><span>Food + coffee throughout</span><span>Included</span></div>
+          <div class="summary-line"><span>Structured networking</span><span>Included</span></div>
+          <div class="summary-line"><span>Recording + prompt pack + template</span><span>Included</span></div>
+          <div class="summary-line"><span>Lifetime access</span><span>Included</span></div>
+          <div class="summary-total"><span>Total</span><span>&#8369;1,500.00</span></div>
+
+          <form action="#" method="post" style="margin-top: 24px;">
+            <div class="field">
+              <label for="first_name">First name</label>
+              <input type="text" id="first_name" name="first_name" placeholder="Your first name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email for receipt</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">WhatsApp number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+63..." required>
+            </div>
+            <button type="submit" class="btn btn-warm btn-lg" style="width: 100%;">Reserve my seat &#8369;1,500</button>
+            <p class="form-meta" style="margin-top: 16px;">Secure payment through GHL. Seat is held the moment payment clears.</p>
+          </form>
+
+          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-soft); line-height: 1.6;">
+            <strong style="color: var(--text);">Why 20 seats only.</strong> Smaller than a webinar audience. Bigger than a coaching call. Cris pulls up your actual business on the screen at least once. That math only works at 20.
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-cta">
+    <span class="sticky-price">&#8369;1,500</span>
+    <span style="font-size: 12px; color: var(--warm); font-weight: 700;"><span id="seatsLeftMobile">14</span> seats left</span>
+    <button type="button" class="btn btn-warm" onclick="document.querySelector('form').submit();">Reserve</button>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div class="brand">
+        <span class="brand-mark">A</span>
+        <span class="brand-name"><strong style="color: white;">AI Hour</strong> Presents</span>
+      </div>
+      <div>&copy; 2026 AI Hour. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // GHL hook: real-time seat counter
+    // window.__cffSeats = await fetch('/api/cff/seats').then(r => r.json());
+    // For now, display a representative count.
+  </script>
+  <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
+</body>
+</html>

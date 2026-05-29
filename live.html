@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Now — AI Hour Presents: Claude for Founders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="live-shell">
+    <div style="max-width: 1280px; margin: 0 auto 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div class="brand">
+        <span class="brand-mark">A</span>
+        <span class="brand-name" style="color: white;"><strong style="color: white;">AI Hour</strong> Presents: Claude for Founders</span>
+      </div>
+      <div class="live-status" id="liveStatus">
+        <span class="live-dot"></span> Live, in progress
+      </div>
+    </div>
+
+    <div class="live-frame">
+      <!-- Zoom embed slot. Wire to GHL access-token-gated Zoom iframe at go-live. -->
+      <div class="placeholder">
+        <strong>Zoom embed slot</strong>
+        Wired to a GHL access-token-gated Zoom iframe on the day of the workshop.
+      </div>
+    </div>
+
+    <div class="live-bar">
+      <div style="color: rgba(255,255,255,0.7); font-size: 14px;">Saturday, June 13 &middot; 2:00 PM Manila &middot; 4 hours</div>
+      <div class="countdown" id="countdown" aria-label="Countdown to live start">
+        <div class="countdown-unit"><div class="countdown-num" id="cdDays">00</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cdHrs">00</div><div class="countdown-label">Hours</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cdMins">00</div><div class="countdown-label">Mins</div></div>
+        <div class="countdown-unit"><div class="countdown-num" id="cdSecs">00</div><div class="countdown-label">Secs</div></div>
+      </div>
+    </div>
+
+    <div style="max-width: 1280px; margin: 32px auto 0; padding: 24px; background: rgba(255,255,255,0.04); border-radius: var(--radius-md); color: rgba(255,255,255,0.85);">
+      <strong style="color: white;">Format reminder.</strong> Four blocs of 50 minutes with short breaks. Q&A in the chat and from the room throughout. Bring your laptop and one real business question.
+    </div>
+  </div>
+
+  <script>
+    // Countdown to Saturday, June 13, 2026, 2:00 PM Manila (UTC+8)
+    const target = new Date('2026-06-13T06:00:00Z').getTime();
+    function tick() {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('cdDays').textContent = pad(d);
+      document.getElementById('cdHrs').textContent = pad(h);
+      document.getElementById('cdMins').textContent = pad(m);
+      document.getElementById('cdSecs').textContent = pad(s);
+      if (diff === 0) {
+        document.getElementById('liveStatus').innerHTML = '<span class="live-dot"></span> Live, in progress';
+      } else {
+        document.getElementById('liveStatus').innerHTML = '<span class="live-dot" style="background:#f97316;"></span> Doors open soon';
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
+  <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
+</body>
+</html>

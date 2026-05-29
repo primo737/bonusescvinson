@@ -1,0 +1,22 @@
+# Visual editor — local only, never commit per project rules
+editor.js
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Vercel
+.vercel
+
+# Editor backups
+*~
+*.swp
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
