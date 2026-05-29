@@ -155,8 +155,8 @@
           <strong>Cris Vinson</strong>
         </div>
         <div class="center">
-          Now showing
-          <strong>claudeforfounders.aihour.ph</strong>
+          Workshop starts in
+          <strong class="js-countdown" id="hero-countdown" aria-live="polite">--d --h --m</strong>
         </div>
         <div class="item right">
           Cohort 03
@@ -496,8 +496,8 @@
           <strong>Cris Vinson</strong>
         </div>
         <div class="url">
-          <small>Now showing at</small>
-          claudeforfounders.aihour.ph
+          <small>Workshop starts in</small>
+          <span class="js-countdown" id="final-countdown" aria-live="polite">--d --h --m</span>
         </div>
         <a href="#register" class="cta-pill">
           Save my seat
@@ -537,6 +537,31 @@
       <span>&rarr;</span>
     </a>
   </div>
+
+  <!-- Live countdown to workshop start (Saturday June 13, 2026, 14:00 Manila = 06:00 UTC) -->
+  <script>
+    (function () {
+      var TARGET = new Date('2026-06-13T06:00:00Z').getTime();
+      var nodes = document.querySelectorAll('.js-countdown');
+      if (!nodes.length) return;
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      function tick() {
+        var diff = TARGET - Date.now();
+        if (diff <= 0) {
+          for (var i = 0; i < nodes.length; i++) nodes[i].textContent = 'Live now';
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        var text = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
+        for (var i = 0; i < nodes.length; i++) nodes[i].textContent = text;
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
 
   <!-- VISUAL EDITOR — local only, never commit to GitHub -->
   <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
