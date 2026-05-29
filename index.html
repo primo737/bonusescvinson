@@ -86,10 +86,26 @@
       </div>
 
       <form class="reg-form" action="#" method="post" novalidate>
-        <div class="form-label">First name</div>
-        <input type="text" name="first_name" placeholder="Your first name" required>
-        <div class="form-label">Email</div>
-        <input type="email" name="email" placeholder="you@example.com" required>
+        <div class="form-field">
+          <div class="form-label">Name</div>
+          <input type="text" name="name" placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <div class="form-label">Email <span class="form-req">required</span></div>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-field">
+          <div class="form-label">Phone</div>
+          <input type="tel" name="phone" placeholder="+63 ...">
+        </div>
+        <div class="form-field">
+          <div class="form-label">How did you hear about us</div>
+          <input type="text" name="referred_by" placeholder="From a friend, Instagram, etc.">
+        </div>
+        <label class="form-consent">
+          <input type="checkbox" name="consent" value="yes">
+          <span>I agree to receive event updates and accept the <a href="/privacy">Privacy Policy</a>.</span>
+        </label>
         <button type="submit" class="btn-cta">
           Save my free seat
           <span class="arrow">&rarr;</span>
@@ -192,50 +208,70 @@
         </div>
       </div>
 
-      <!-- Working shots gallery -->
-      <div class="work-gallery-head">
-        <span class="label">From the room</span>
-        <h3>The cohorts in action, May 16 and June 2.</h3>
-        <span class="folio">Cohort 01 + 02 &middot; 6 frames</span>
-      </div>
+      <!-- Working shots gallery v2 — editorial magazine spread -->
+      <div class="editorial-spread">
 
-      <div class="work-gallery">
-
-        <div class="work-tile large" style="background-image: url('assets/photos/DSCF4791.JPG');">
-          <div class="work-tile-cap">
-            <span class="tag">Cohort 01 &middot; Bloc 02</span>
-            <span class="moment">Founders listening, learning what their Claude can actually do.</span>
-          </div>
+        <div class="editorial-head">
+          <span class="editorial-eyebrow">From the room</span>
+          <h3 class="editorial-title">The cohorts in action, <em>heads down</em>.</h3>
+          <span class="editorial-folio">Cohort 01 + 02 &middot; 6 frames</span>
         </div>
 
-        <div class="work-tile" style="background-image: url('assets/photos/DSCF4805.JPG');">
-          <div class="work-tile-cap">
-            <span class="tag">Cohort 01 &middot; Building</span>
-            <span class="moment">Laptops out. Ship the asset live.</span>
+        <figure class="editorial-hero" style="background-image: url('assets/photos/DSCF4798.JPG');">
+          <div class="editorial-hero-mark">
+            <span class="editorial-hero-roll">Roll 01</span>
+            <span class="editorial-hero-frame">Frame 4798</span>
           </div>
-        </div>
+          <figcaption class="editorial-hero-quote">
+            <span class="editorial-hero-tag">Cohort 01 &middot; Mid-build</span>
+            <p>Heads down, hands on keys.</p>
+            <span class="editorial-hero-meta">Cohort 01 founders working at their laptops mid-session.</span>
+          </figcaption>
+        </figure>
 
-        <div class="work-tile" style="background-image: url('assets/photos/DSCF4796.JPG');">
-          <div class="work-tile-cap">
-            <span class="tag">Cohort 01 &middot; Bloc 01</span>
-            <span class="moment">The sticky-note wall. Real questions, real answers.</span>
-          </div>
-        </div>
+        <div class="editorial-strip">
 
-        <div class="work-tile" style="background-image: url('assets/photos/DSCF4900.JPG');">
-          <div class="work-tile-cap">
-            <span class="tag">Cohort 02 &middot; Q&amp;A</span>
-            <span class="moment">Eye-contact answers on a real business.</span>
-          </div>
-        </div>
+          <figure class="editorial-frame">
+            <div class="editorial-frame-img" style="background-image: url('assets/photos/DSCF4810.JPG');"></div>
+            <figcaption>
+              <span class="editorial-frame-tag">Cohort 01 &middot; 4810</span>
+              <span class="editorial-frame-cap">Two founders thinking out loud.</span>
+            </figcaption>
+          </figure>
 
-        <div class="work-tile" style="background-image: url('assets/photos/DSCF4908.JPG');">
-          <div class="work-tile-cap">
-            <span class="tag">Cohort 02 &middot; Networking</span>
-            <span class="moment">Three founders you would not have met otherwise.</span>
-          </div>
-        </div>
+          <figure class="editorial-frame">
+            <div class="editorial-frame-img" style="background-image: url('assets/photos/DSCF4820.JPG');"></div>
+            <figcaption>
+              <span class="editorial-frame-tag">Cohort 01 &middot; 4820</span>
+              <span class="editorial-frame-cap">Late-session focus.</span>
+            </figcaption>
+          </figure>
 
+          <figure class="editorial-frame">
+            <div class="editorial-frame-img" style="background-image: url('assets/photos/DSCF4889.JPG');"></div>
+            <figcaption>
+              <span class="editorial-frame-tag">Cohort 02 &middot; 4889</span>
+              <span class="editorial-frame-cap">Cohort 02 settling into the work.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="editorial-frame">
+            <div class="editorial-frame-img" style="background-image: url('assets/photos/DSCF4895.JPG');"></div>
+            <figcaption>
+              <span class="editorial-frame-tag">Cohort 02 &middot; 4895</span>
+              <span class="editorial-frame-cap">Working the build.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="editorial-frame">
+            <div class="editorial-frame-img" style="background-image: url('assets/photos/DSCF4906.JPG');"></div>
+            <figcaption>
+              <span class="editorial-frame-tag">Cohort 02 &middot; 4906</span>
+              <span class="editorial-frame-cap">Mid-build, mid-thought.</span>
+            </figcaption>
+          </figure>
+
+        </div>
       </div>
     </div>
   </section>
@@ -393,6 +429,13 @@
       <div class="footer-right">
         &copy; 2026 AI Hour. All rights reserved.
       </div>
+    </div>
+    <div class="footer-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <span class="footer-legal-sep">&middot;</span>
+      <a href="/cookies">Cookies</a>
+      <span class="footer-legal-sep">&middot;</span>
+      <a href="/terms">Terms</a>
     </div>
   </footer>
 

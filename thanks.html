@@ -76,6 +76,20 @@
     </div>
   </section>
 
+  <!-- 2b. ONE-TIME OFFER BANNER (urgency strip) -->
+  <section class="oto-banner" role="region" aria-label="One-time offer">
+    <div class="oto-inner">
+      <div class="oto-copy">
+        <div class="oto-headline">One Time Offer, While This Tab Is Open</div>
+        <div class="oto-subhead">If you close this page, the upgrade is gone.</div>
+      </div>
+      <div class="oto-timer" aria-live="polite">
+        <div class="oto-timer-label">Offer expires in</div>
+        <div class="oto-timer-clock" id="oto-countdown">15:00</div>
+      </div>
+    </div>
+  </section>
+
   <!-- 3. SHARE-TO-UPGRADE (PRIMARY CTA) -->
   <section class="share-hero">
     <div class="share-inner">
@@ -131,13 +145,13 @@
         </div>
 
         <div class="share-buttons">
-          <a class="share-btn wa" href="https://wa.me/?text=I%20just%20signed%20up%20for%20Claude%20for%20Founders%20%E2%80%94%20a%20free%204-hour%20Saturday%20workshop%20with%20Cris%20Vinson%20on%20how%20to%20actually%20use%20Claude%20in%20your%20business.%20No%20code.%20Saturday%20June%2013.%20Save%20your%20seat%3A%20claudeforfounders.aihour.ph%20%23ClaudeForFounders" target="_blank" rel="noopener">
+          <a class="share-btn wa" href="https://wa.me/?text=I%20just%20signed%20up%20for%20the%20AI%20Hour%20Workshop%2C%20a%20free%204-hour%20Saturday%20session%20with%20Cris%20Vinson%20on%20how%20to%20actually%20use%20Claude%20in%20your%20business.%20No%20code.%20Saturday%20June%2013.%20Save%20your%20seat%3A%20https%3A%2F%2Fbonusescvinson.vercel.app%2F%20%23AIHourWorkshop" target="_blank" rel="noopener">
             WhatsApp
           </a>
-          <a class="share-btn msg" href="https://www.facebook.com/dialog/send?app_id=&link=https%3A%2F%2Fclaudeforfounders.aihour.ph&redirect_uri=https%3A%2F%2Fclaudeforfounders.aihour.ph" target="_blank" rel="noopener">
+          <a class="share-btn msg" href="https://www.facebook.com/dialog/send?app_id=&link=https%3A%2F%2Fbonusescvinson.vercel.app%2F&redirect_uri=https%3A%2F%2Fbonusescvinson.vercel.app%2F" target="_blank" rel="noopener">
             Messenger
           </a>
-          <a class="share-btn email" href="mailto:?subject=Claude%20for%20Founders%20%E2%80%94%20free%20Saturday%20workshop&body=Hey%2C%20I%20just%20signed%20up%20for%20this%20and%20thought%20of%20you.%20A%20free%204-hour%20Saturday%20workshop%20with%20Cris%20Vinson%20on%20how%20to%20actually%20use%20Claude%20in%20your%20business.%20No%20code%2C%20no%20fluff.%20Saturday%20June%2013.%0A%0Aclaudeforfounders.aihour.ph%0A%0A%23ClaudeForFounders">
+          <a class="share-btn email" href="mailto:?subject=AI%20Hour%20Workshop%2C%20free%20Saturday%20session&body=Hey%2C%20I%20just%20signed%20up%20for%20this%20and%20thought%20of%20you.%20A%20free%204-hour%20Saturday%20workshop%20with%20Cris%20Vinson%20on%20how%20to%20actually%20use%20Claude%20in%20your%20business.%20No%20code%2C%20no%20fluff.%20Saturday%20June%2013.%0A%0Ahttps%3A%2F%2Fbonusescvinson.vercel.app%2F%0A%0A%23AIHourWorkshop">
             Email
           </a>
           <button class="share-btn copy" onclick="copyShare()">
@@ -147,12 +161,12 @@
 
         <div class="ref-link">
           <span class="label">Your link</span>
-          <span class="url" id="ref-url">claudeforfounders.aihour.ph?ref=your-name</span>
+          <span class="url" id="ref-url">bonusescvinson.vercel.app/?ref=your-name</span>
           <button class="copy-btn" onclick="copyRef()">Copy</button>
         </div>
 
         <p class="form-foot" style="text-align: center; margin-top: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-mute);">
-          Tag <strong style="color: var(--c-warm);">#ClaudeForFounders</strong> if you post publicly. We track shares in your portal.
+          Tag <strong style="color: var(--c-warm);">#AIHourWorkshop</strong> if you post publicly. We track shares in your portal.
         </p>
 
       </div>
@@ -229,11 +243,31 @@
         &copy; 2026 AI Hour. All rights reserved.
       </div>
     </div>
+
+    <div class="footer-legal-block">
+      <nav class="footer-legal-row" aria-label="Legal">
+        <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="/cookies-policy">Cookies Policy</a>
+      </nav>
+      <nav class="footer-legal-row" aria-label="Regional compliance">
+        <a href="/gdpr-compliance">GDPR Compliance</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="/ccpa">CCPA</a>
+      </nav>
+      <p class="footer-fineprint">
+        &copy; 2026 Cris Vinson<br />
+        This page may contain affiliate links. We only recommend tools we personally use and trust.<br />
+        Results vary. Outcomes shown are not typical and depend on your effort, experience, and execution.
+      </p>
+    </div>
   </footer>
 
   <script>
-    const SHARE_URL = 'https://claudeforfounders.aihour.ph?ref=your-name';
-    const SHARE_TEXT = 'I just signed up for Claude for Founders, a free 4-hour Saturday workshop with Cris Vinson on how to actually use Claude in your business. No code. Saturday June 13. ' + SHARE_URL + ' #ClaudeForFounders';
+    const SHARE_URL = 'https://bonusescvinson.vercel.app/?ref=your-name';
+    const SHARE_TEXT = 'I just signed up for the AI Hour Workshop, a free 4-hour Saturday session with Cris Vinson on how to actually use Claude in your business. No code. Saturday June 13. ' + SHARE_URL + ' #AIHourWorkshop';
 
     function copyShare() {
       navigator.clipboard.writeText(SHARE_TEXT).then(() => {
@@ -251,6 +285,33 @@
         setTimeout(() => btn.textContent = old, 1800);
       });
     }
+
+    // OTO countdown: 15:00 starting on page load. When it hits 0, replace with "Offer expired."
+    (function otoCountdown() {
+      const el = document.getElementById('oto-countdown');
+      if (!el) return;
+      let remaining = 15 * 60; // seconds
+      function render() {
+        if (remaining <= 0) {
+          el.textContent = 'Offer expired.';
+          el.classList.add('expired');
+          return;
+        }
+        const m = Math.floor(remaining / 60);
+        const s = remaining % 60;
+        el.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+      }
+      render();
+      const tick = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+          render();
+          clearInterval(tick);
+          return;
+        }
+        render();
+      }, 1000);
+    })();
   </script>
 
   <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>

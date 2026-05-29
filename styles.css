@@ -2025,3 +2025,686 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
   .leaderboard-row { grid-template-columns: 48px 1fr auto; }
   .leaderboard-row .lb-badge { display: none; }
 }
+
+
+/* ==========================================================================
+   SECTION 02 WORKING SHOTS GALLERY V2 — Editorial Magazine Spread
+   Distinct from outcomes mosaic + old work-gallery. Uses a hero photo with
+   overlay caption-quote, plus a 5-frame strip below with mono labels.
+   ========================================================================== */
+
+.editorial-spread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.editorial-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: var(--s-3);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--c-rule);
+}
+.editorial-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--c-warm);
+}
+.editorial-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px; line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--c-ink);
+  flex: 1 1 auto;
+  text-align: center;
+}
+.editorial-title em {
+  font-style: italic; color: var(--c-primary); font-weight: 500;
+}
+.editorial-folio {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--c-mute);
+}
+
+/* Hero photo with overlay quote */
+.editorial-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-ink);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.editorial-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12,12,29,0.05) 0%,
+    rgba(12,12,29,0.0) 35%,
+    rgba(12,12,29,0.55) 75%,
+    rgba(12,12,29,0.88) 100%
+  );
+  pointer-events: none;
+}
+.editorial-hero-mark {
+  position: absolute;
+  top: 18px; left: 20px;
+  display: flex; align-items: center; gap: 10px;
+  color: rgba(255,255,255,0.92);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  z-index: 2;
+}
+.editorial-hero-roll {
+  padding: 5px 10px;
+  background: var(--c-warm);
+  color: white;
+  border-radius: 999px;
+}
+.editorial-hero-frame {
+  color: rgba(255,255,255,0.85);
+}
+.editorial-hero-quote {
+  position: absolute;
+  left: 32px; right: 32px; bottom: 28px;
+  color: white;
+  z-index: 2;
+  max-width: 720px;
+}
+.editorial-hero-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 10px;
+}
+.editorial-hero-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 8px;
+}
+.editorial-hero-meta {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.4;
+}
+
+/* Strip of 5 small frames below the hero */
+.editorial-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-3);
+}
+.editorial-frame {
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+.editorial-frame-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-ink);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--c-rule);
+  position: relative;
+  overflow: hidden;
+}
+.editorial-frame-img::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 65%, rgba(12,12,29,0.18) 100%);
+  pointer-events: none;
+}
+.editorial-frame figcaption {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 0 2px;
+}
+.editorial-frame-tag {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--c-warm);
+}
+.editorial-frame-cap {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+}
+
+/* Tablet — 1024px and down */
+@media (max-width: 1024px) {
+  .editorial-title { font-size: 22px; text-align: left; }
+  .editorial-hero { aspect-ratio: 16 / 9; }
+  .editorial-hero-quote p { font-size: 28px; }
+  .editorial-strip {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-3);
+  }
+  .editorial-frame:nth-child(4),
+  .editorial-frame:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
+/* Phone — 768px and down */
+@media (max-width: 768px) {
+  .editorial-head {
+    flex-direction: column; align-items: flex-start; gap: 6px;
+  }
+  .editorial-title { font-size: 22px; text-align: left; }
+  .editorial-hero {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--r-sm);
+  }
+  .editorial-hero-mark { top: 12px; left: 14px; }
+  .editorial-hero-quote { left: 18px; right: 18px; bottom: 18px; }
+  .editorial-hero-quote p { font-size: 22px; }
+  .editorial-hero-meta { font-size: 13px; }
+  .editorial-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small phone — 375px and down */
+@media (max-width: 400px) {
+  .editorial-strip { grid-template-columns: 1fr; }
+  .editorial-frame-img { aspect-ratio: 3 / 2; }
+}
+
+
+/* ==========================================================================
+   EXPANDED FORM FIELDS — Section 03 registration band
+   ========================================================================== */
+
+.reg-form .form-field {
+  display: flex; flex-direction: column;
+  gap: 6px;
+}
+
+.reg-form .form-req {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--c-warm);
+  margin-left: 6px;
+}
+
+.reg-form .form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+.reg-form .form-consent input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
+  border: 1.5px solid var(--c-rule-strong);
+  border-radius: var(--r-sm);
+  background: var(--c-bg);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s, background 0.15s;
+}
+.reg-form .form-consent input[type="checkbox"]:hover {
+  border-color: var(--c-ink);
+}
+.reg-form .form-consent input[type="checkbox"]:checked {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+}
+.reg-form .form-consent input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 5px;
+  width: 5px; height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.reg-form .form-consent input[type="checkbox"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 55, 168, 0.18);
+}
+.reg-form .form-consent span {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--c-body);
+}
+.reg-form .form-consent a {
+  color: var(--c-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.reg-form .form-consent a:hover {
+  color: var(--c-primary-hover);
+}
+
+
+/* ==========================================================================
+   FOOTER LEGAL ROW — Privacy / Cookies / Terms
+   ========================================================================== */
+
+.footer-legal {
+  max-width: var(--container);
+  margin: var(--s-4) auto 0;
+  padding: var(--s-3) 32px 0;
+  border-top: 1px solid var(--c-rule);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.footer-legal a {
+  color: var(--c-mute);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-legal a:hover {
+  color: var(--c-ink);
+}
+.footer-legal-sep {
+  color: var(--c-rule-strong);
+}
+
+@media (max-width: 768px) {
+  .footer-legal {
+    padding: var(--s-3) 20px 0;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+}
+
+
+/* ==========================================================================
+   OTO Banner — One-Time Offer urgency strip (thanks page)
+   ========================================================================== */
+
+.oto-banner {
+  width: 100%;
+  background: linear-gradient(90deg, #b8410a 0%, var(--c-warm) 50%, #d8651e 100%);
+  color: white;
+  border-top: 2px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 4px 14px rgba(196, 78, 10, 0.28);
+  padding: var(--s-4) 0;
+  position: relative;
+  overflow: hidden;
+}
+.oto-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0 2px,
+      transparent 2px 14px
+    );
+  pointer-events: none;
+}
+
+.oto-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+}
+
+.oto-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.oto-headline {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: white;
+  line-height: 1.15;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+}
+
+.oto-subhead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.96);
+  font-variation-settings: "opsz" 144;
+}
+
+.oto-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.oto-timer-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.oto-timer-clock {
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: white;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 6px 16px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  min-width: 130px;
+  text-align: center;
+}
+
+.oto-timer-clock.expired {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: -0.01em;
+  background: rgba(0, 0, 0, 0.32);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 640px) {
+  .oto-banner { padding: var(--s-4) 0; }
+  .oto-inner {
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-3);
+  }
+  .oto-timer {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .oto-timer-clock {
+    min-width: 120px;
+  }
+}
+
+
+/* ==========================================================================
+   FOOTER LEGAL BLOCK — Two-row link rows + fineprint copyright
+   (Privacy / Cookies / Terms + GDPR / CCPA + affiliate + results disclaimer)
+   ========================================================================== */
+
+.footer-legal-block {
+  max-width: var(--container);
+  margin: var(--s-4) auto 0;
+  padding: var(--s-4) 32px 0;
+  border-top: 1px solid var(--c-rule);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  text-align: center;
+}
+
+.footer-legal-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.8;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-mute);
+}
+
+.footer-legal-row a {
+  color: var(--c-mute);
+  text-decoration: none;
+  padding: 0 1px;
+  transition: color 0.15s;
+}
+.footer-legal-row a:hover {
+  color: var(--c-ink);
+}
+
+.footer-legal-block .footer-legal-sep {
+  color: var(--c-rule-strong);
+  padding: 0 1ch;
+}
+
+.footer-fineprint {
+  margin-top: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-mute);
+  max-width: 760px;
+}
+
+@media (max-width: 768px) {
+  .footer-legal-block {
+    padding: var(--s-4) 20px 0;
+  }
+  .footer-legal-row {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+  .footer-fineprint {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+}
+
+
+/* ==========================================================================
+   LEGAL PAGES — Privacy, Cookies, Terms
+   Long-form policy bodies set in serif h1/h2 plus Inter body. Cream bg.
+   Masthead still sticks to top via existing .masthead rules.
+   ========================================================================== */
+
+.legal-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--s-9) 32px var(--s-9);
+  background: var(--c-bg);
+}
+
+.legal-page-head {
+  text-align: left;
+  padding-bottom: var(--s-7);
+  border-bottom: 2px solid var(--c-ink);
+  margin-bottom: var(--s-7);
+}
+
+.legal-page-head .legal-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-warm);
+  margin-bottom: var(--s-4);
+}
+
+.legal-page h1 {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+  margin-bottom: var(--s-4);
+}
+
+.legal-page h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--c-primary);
+}
+
+.legal-page-head .legal-deck {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--c-mute);
+  max-width: 640px;
+}
+
+.legal-body section {
+  margin-bottom: var(--s-7);
+}
+
+.legal-body h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  margin-bottom: var(--s-4);
+  padding-top: var(--s-3);
+}
+
+.legal-body h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--c-ink);
+  margin-top: var(--s-5);
+  margin-bottom: var(--s-3);
+}
+
+.legal-body p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-body);
+  margin-bottom: var(--s-4);
+}
+
+.legal-body p.uppercase {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--c-body);
+}
+
+.legal-body a {
+  color: var(--c-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-body a:hover {
+  color: var(--c-primary-hover);
+}
+
+.legal-body ul,
+.legal-body ol {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-body);
+  margin: 0 0 var(--s-4) var(--s-5);
+  padding-left: var(--s-4);
+}
+
+.legal-body ul.list-disc {
+  list-style: disc;
+}
+
+.legal-body ol {
+  list-style: decimal;
+}
+
+.legal-body li {
+  margin-bottom: var(--s-2);
+}
+
+.legal-body strong {
+  color: var(--c-ink);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .legal-page {
+    padding: var(--s-7) 20px var(--s-7);
+  }
+  .legal-page h1 {
+    font-size: 40px;
+  }
+  .legal-body h2 {
+    font-size: 24px;
+  }
+  .legal-body h3 {
+    font-size: 18px;
+  }
+  .legal-page-head .legal-deck {
+    font-size: 16px;
+  }
+}
