@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /portal
+Disallow: /vip-confirmed
+Disallow: /f2f-confirmed
+Disallow: /editor.js
+
+Sitemap: https://bonusescvinson.vercel.app/sitemap.xml
