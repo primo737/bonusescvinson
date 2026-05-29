@@ -2352,134 +2352,103 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
 
 
 /* ==========================================================================
-   OTO Banner — One-Time Offer urgency strip (thanks page)
+   Share-head Urgency Module — OTO + timer merged into .share-head (thanks page)
    ========================================================================== */
 
-.oto-banner {
-  width: 100%;
-  background: linear-gradient(90deg, #b8410a 0%, var(--c-warm) 50%, #d8651e 100%);
-  color: white;
-  border-top: 2px solid rgba(0, 0, 0, 0.18);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 4px 14px rgba(196, 78, 10, 0.28);
-  padding: var(--s-4) 0;
-  position: relative;
-  overflow: hidden;
-}
-.oto-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.05) 0 2px,
-      transparent 2px 14px
-    );
-  pointer-events: none;
-}
-
-.oto-inner {
-  position: relative;
-  z-index: 2;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 32px;
+.share-head-urgency {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--s-5);
+  gap: var(--s-4);
   flex-wrap: wrap;
+  margin-bottom: var(--s-3);
 }
 
-.oto-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.oto-headline {
+.share-head-urgency-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 12px;
+  background: linear-gradient(135deg, #b8410a 0%, var(--c-warm) 100%);
+  color: white;
   font-family: var(--font-mono);
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: white;
-  line-height: 1.15;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  border-radius: var(--r-full);
+  box-shadow: 0 2px 8px rgba(196, 78, 10, 0.25);
+}
+.share-head-urgency-pill .gift {
+  font-size: 16px;
+  line-height: 1;
 }
 
-.oto-subhead {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: clamp(15px, 1.6vw, 19px);
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.96);
-  font-variation-settings: "opsz" 144;
-}
-
-.oto-timer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+.share-head-urgency-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
   flex-shrink: 0;
 }
 
-.oto-timer-label {
+.share-head-urgency-timer-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--c-mute);
 }
 
-.oto-timer-clock {
+.share-head-urgency-timer-clock {
   font-family: var(--font-mono);
-  font-size: clamp(28px, 3.2vw, 38px);
+  font-size: clamp(22px, 2.6vw, 30px);
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: white;
-  background: rgba(0, 0, 0, 0.22);
-  padding: 6px 16px;
+  letter-spacing: 0.05em;
+  color: var(--c-warm);
+  background: var(--c-warm-soft);
+  padding: 4px 14px;
   border-radius: var(--r-sm);
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border: 1.5px solid var(--c-warm);
   font-variant-numeric: tabular-nums;
   line-height: 1.05;
-  min-width: 130px;
+  min-width: 96px;
   text-align: center;
 }
 
-.oto-timer-clock.expired {
+.share-head-urgency-timer-clock.expired {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: clamp(16px, 1.8vw, 20px);
   letter-spacing: -0.01em;
-  background: rgba(0, 0, 0, 0.32);
-  color: rgba(255, 255, 255, 0.85);
+  background: var(--c-bg-warm);
+  color: var(--c-mute);
+  border-color: var(--c-rule-strong);
+}
+
+.share-head-urgency-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.4;
+  color: var(--c-mute);
+  margin-bottom: var(--s-3);
 }
 
 @media (max-width: 640px) {
-  .oto-banner { padding: var(--s-4) 0; }
-  .oto-inner {
-    padding: 0 20px;
+  .share-head-urgency {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--s-3);
   }
-  .oto-timer {
-    align-items: flex-start;
+  .share-head-urgency-timer {
     width: 100%;
+    justify-content: space-between;
   }
-  .oto-timer-clock {
-    min-width: 120px;
+  .share-head-urgency-timer-clock {
+    min-width: 110px;
   }
 }
 

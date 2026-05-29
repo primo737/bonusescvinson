@@ -76,29 +76,22 @@
     </div>
   </section>
 
-  <!-- 2b. ONE-TIME OFFER BANNER (urgency strip) -->
-  <section class="oto-banner" role="region" aria-label="One-time offer">
-    <div class="oto-inner">
-      <div class="oto-copy">
-        <div class="oto-headline">One Time Offer, While This Tab Is Open</div>
-        <div class="oto-subhead">If you close this page, the upgrade is gone.</div>
-      </div>
-      <div class="oto-timer" aria-live="polite">
-        <div class="oto-timer-label">Offer expires in</div>
-        <div class="oto-timer-clock" id="oto-countdown">15:00</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. SHARE-TO-UPGRADE (PRIMARY CTA) -->
+  <!-- 3. SHARE-TO-UPGRADE (PRIMARY CTA) — OTO urgency merged into head -->
   <section class="share-hero">
     <div class="share-inner">
 
       <div class="share-head">
-        <div class="share-eyebrow">
-          <span class="gift">&#127873;</span>
-          Free upgrade waiting
+        <div class="share-head-urgency" role="region" aria-label="One-time offer">
+          <span class="share-head-urgency-pill">
+            <span class="gift" aria-hidden="true">&#127873;</span>
+            One Time Offer
+          </span>
+          <div class="share-head-urgency-timer" aria-live="polite">
+            <span class="share-head-urgency-timer-label">Offer expires in</span>
+            <span class="share-head-urgency-timer-clock" id="oto-countdown">15:00</span>
+          </div>
         </div>
+        <p class="share-head-urgency-line">If you close this page, the upgrade is gone.</p>
         <h2>Want VIP, all the bonuses, and a shot at the live awards, <em>for free</em>?</h2>
         <p class="deck">Share Claude for Founders with founders who need it. The more you bring, the more you unlock. We hand out the awards live during the workshop on Saturday.</p>
       </div>
