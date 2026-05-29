@@ -2677,3 +2677,28 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
     font-size: 16px;
   }
 }
+
+
+/* ==========================================================================
+   Form status
+   ========================================================================== */
+
+.form-status {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: var(--s-3);
+  min-height: 1.4em;
+  color: var(--c-success);
+}
+.form-status.err {
+  color: var(--c-warm);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+}

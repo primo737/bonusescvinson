@@ -176,7 +176,7 @@
         <p>Free online seat. Bring your laptop. Bring one bottleneck. Walk out with an asset shipped, a Skill running, and three patterns you can copy this week.</p>
       </div>
 
-      <form class="reg-form" action="#" method="post" novalidate>
+      <form class="reg-form" id="reg-form" action="https://automation.civy.io/webhook/aihour-workshop-signup" method="post" novalidate>
         <div class="form-field">
           <div class="form-label">Name</div>
           <input type="text" name="name" placeholder="Your name">
@@ -201,6 +201,7 @@
           Save my free seat
           <span class="arrow">&rarr;</span>
         </button>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
         <div class="form-foot">No credit card &middot; One real workshop &middot; Given freely</div>
       </form>
     </div>
@@ -560,6 +561,46 @@
       }
       tick();
       setInterval(tick, 1000);
+    })();
+  </script>
+
+  <!-- Registration form: submit to n8n webhook, redirect to /thanks on success -->
+  <script>
+    (function () {
+      var form = document.getElementById('reg-form');
+      if (!form) return;
+      var btn = form.querySelector('button[type="submit"]');
+      var status = document.getElementById('form-status');
+      var endpoint = 'https://automation.civy.io/webhook/aihour-workshop-signup';
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = {};
+        new FormData(form).forEach(function (v, k) { data[k] = v; });
+        if (!data.email) {
+          status.textContent = 'Please enter your email so we can send your Zoom link.';
+          status.className = 'form-status err';
+          return;
+        }
+        btn.disabled = true;
+        var oldLabel = btn.innerHTML;
+        btn.innerHTML = 'Saving your seat...';
+        status.textContent = '';
+        status.className = 'form-status';
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(function (r) {
+          if (r.ok) { window.location.href = '/thanks'; return; }
+          throw new Error('Submission failed with status ' + r.status);
+        }).catch(function (err) {
+          btn.disabled = false;
+          btn.innerHTML = oldLabel;
+          status.textContent = 'Something went wrong. Please try again or email cvinson@primof.ph if it keeps happening.';
+          status.className = 'form-status err';
+          console.error(err);
+        });
+      });
     })();
   </script>
 
