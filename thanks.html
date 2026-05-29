@@ -51,54 +51,8 @@
     </div>
   </header>
 
-  <!-- 2. CONFIRMATION HERO -->
-  <section class="ty-hero">
-    <div class="container-narrow">
-      <div class="check" aria-hidden="true">&#10003;</div>
-      <span class="eyebrow">You're in</span>
-      <h1>Your free seat is <em>saved</em>.</h1>
-      <p class="lede">Check your inbox for the Zoom link and the calendar invite. We'll send reminders the day before and the morning of. Before you close this tab, there is a free upgrade waiting.</p>
-
-      <div class="ty-event-card">
-        <div class="ty-event-row">
-          <div class="ty-icon">&#128197;</div>
-          <div>
-            <div class="ty-label">When</div>
-            <div class="ty-value">Saturday, June 13 &middot; 2:00 PM Manila &middot; 4 hours</div>
-          </div>
-        </div>
-        <div class="ty-event-row">
-          <div class="ty-icon">&#128241;</div>
-          <div>
-            <div class="ty-label">Where</div>
-            <div class="ty-value">Live on Zoom (link in your email and in your portal)</div>
-          </div>
-        </div>
-        <div class="ty-event-row">
-          <div class="ty-icon">&#127919;</div>
-          <div>
-            <div class="ty-label">Bring</div>
-            <div class="ty-value">Your laptop and one real business question</div>
-          </div>
-        </div>
-
-        <div class="cal-row">
-          <a class="cal-btn" href="#" data-cal="google">
-            <span>&#128197;</span> Google Calendar
-          </a>
-          <a class="cal-btn" href="#" data-cal="apple">
-            <span>&#63743;</span> Apple Calendar
-          </a>
-          <a class="cal-btn" href="#" data-cal="outlook">
-            <span>&#128231;</span> Outlook
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. SHARE-TO-UPGRADE (PRIMARY CTA) — OTO urgency merged into head -->
-  <section class="share-hero">
+  <!-- 2. SHARE-TO-UPGRADE (PRIMARY CTA) — OTO urgency merged into head, confirmation embedded between tiers and share row -->
+  <section class="share-hero" id="share">
     <div class="share-inner">
 
       <div class="share-head">
@@ -148,6 +102,52 @@
           <p class="tier-detail">Plus an on-stage shoutout in front of the cohort during the workshop. Ten or more, and you're in the top spot.</p>
         </div>
 
+      </div>
+
+      <!-- Confirmation block, embedded between tiers and share action -->
+      <div class="ty-hero ty-hero--embedded">
+        <div class="container-narrow">
+          <div class="check" aria-hidden="true">&#10003;</div>
+          <span class="eyebrow">You're in</span>
+          <h1>Your free seat is <em>saved</em>.</h1>
+          <p class="lede">Check your inbox for the Zoom link and the calendar invite. We'll send reminders the day before and the morning of.</p>
+
+          <div class="ty-event-card">
+            <div class="ty-event-row">
+              <div class="ty-icon">&#128197;</div>
+              <div>
+                <div class="ty-label">When</div>
+                <div class="ty-value">Saturday, June 13 &middot; 2:00 PM Manila &middot; 4 hours</div>
+              </div>
+            </div>
+            <div class="ty-event-row">
+              <div class="ty-icon">&#128241;</div>
+              <div>
+                <div class="ty-label">Where</div>
+                <div class="ty-value">Live on Zoom (link in your email and in your portal)</div>
+              </div>
+            </div>
+            <div class="ty-event-row">
+              <div class="ty-icon">&#127919;</div>
+              <div>
+                <div class="ty-label">Bring</div>
+                <div class="ty-value">Your laptop and one real business question</div>
+              </div>
+            </div>
+
+            <div class="cal-row">
+              <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=AI%20Hour%20Presents%3A%20Claude%20for%20Founders&dates=20260613T060000Z%2F20260613T100000Z&details=4-hour%20live%20workshop.%20Zoom%20link%20arrives%20in%20your%20confirmation%20email.&location=Online%20%28Zoom%29" data-cal="google" target="_blank" rel="noopener">
+                <span>&#128197;</span> Google Calendar
+              </a>
+              <a class="cal-btn" href="/assets/claude-for-founders.ics" data-cal="apple">
+                <span>&#63743;</span> Apple Calendar
+              </a>
+              <a class="cal-btn" href="https://outlook.live.com/calendar/0/deeplink/compose?subject=AI%20Hour%20Presents%3A%20Claude%20for%20Founders&startdt=2026-06-13T06%3A00%3A00Z&enddt=2026-06-13T10%3A00%3A00Z&body=4-hour%20live%20workshop.%20Zoom%20link%20arrives%20in%20your%20confirmation%20email.&location=Online%20%28Zoom%29" data-cal="outlook" target="_blank" rel="noopener">
+                <span>&#128231;</span> Outlook
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Share row -->
@@ -260,16 +260,11 @@
 
     <div class="footer-legal-block">
       <nav class="footer-legal-row" aria-label="Legal">
-        <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+        <a href="/terms">Terms &amp; Conditions</a>
         <span class="footer-legal-sep">|</span>
-        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/privacy">Privacy Policy</a>
         <span class="footer-legal-sep">|</span>
-        <a href="/cookies-policy">Cookies Policy</a>
-      </nav>
-      <nav class="footer-legal-row" aria-label="Regional compliance">
-        <a href="/gdpr-compliance">GDPR Compliance</a>
-        <span class="footer-legal-sep">|</span>
-        <a href="/ccpa">CCPA</a>
+        <a href="/cookies">Cookies Policy</a>
       </nav>
       <p class="footer-fineprint">
         &copy; 2026 Cris Vinson<br />

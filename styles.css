@@ -403,8 +403,9 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
   box-shadow: 0 0 0 3px rgba(12,12,29,0.08);
 }
 .reg-form .btn-cta {
+  position: relative;
   width: 100%;
-  padding: 16px 22px;
+  padding: 16px 56px;
   background: var(--c-ink);
   color: white;
   font-family: var(--font-mono);
@@ -412,14 +413,18 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  text-align: center;
   border: none;
   border-radius: var(--r-sm);
   cursor: pointer;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: center;
   transition: background 0.15s;
 }
 .reg-form .btn-cta:hover { background: var(--c-primary); }
 .reg-form .btn-cta .arrow {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
   width: 28px; height: 28px; border-radius: 999px;
   background: var(--c-warm); display: grid; place-items: center;
   font-size: 16px; font-family: var(--font-body); font-weight: 700;
@@ -1160,6 +1165,12 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
   padding: var(--s-9) 0 var(--s-7);
   text-align: center;
   border-bottom: 1px solid var(--c-rule);
+}
+.ty-hero--embedded {
+  background: none;
+  padding: var(--s-7) 0;
+  border-bottom: none;
+  margin: var(--s-6) 0;
 }
 .ty-hero .check {
   width: 72px; height: 72px; border-radius: 999px;

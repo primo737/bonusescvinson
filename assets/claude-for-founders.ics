@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//AI Hour//Claude for Founders//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:claude-for-founders-2026-06-13@bonuses.crisvinson.com
+DTSTAMP:20260529T163001Z
+DTSTART:20260613T060000Z
+DTEND:20260613T100000Z
+SUMMARY:AI Hour Presents: Claude for Founders
+DESCRIPTION:4-hour live workshop. Zoom link arrives in your confirmation email.
+LOCATION:Online (Zoom)
+URL:https://bonuses.crisvinson.com/
+END:VEVENT
+END:VCALENDAR
