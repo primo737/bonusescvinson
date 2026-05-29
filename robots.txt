@@ -5,4 +5,4 @@ Disallow: /vip-confirmed
 Disallow: /f2f-confirmed
 Disallow: /editor.js
 
-Sitemap: https://bonusescvinson.vercel.app/sitemap.xml
+Sitemap: https://bonuses.crisvinson.com/sitemap.xml
