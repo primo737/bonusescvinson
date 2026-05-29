@@ -178,31 +178,37 @@
 
       <form class="reg-form" id="reg-form" action="https://n8n.cvinson.cloud/webhook/aihour-workshop-signup" method="post" novalidate>
         <div class="form-field">
-          <div class="form-label">Name</div>
-          <input type="text" name="name" placeholder="Your name">
+          <div class="form-label">Full Name <span class="form-req">required</span></div>
+          <input type="text" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-field">
+          <div class="form-label">Phone <span class="form-req">required</span></div>
+          <input type="tel" name="phone" placeholder="+63 917 123 4567" required>
         </div>
         <div class="form-field">
           <div class="form-label">Email <span class="form-req">required</span></div>
           <input type="email" name="email" placeholder="you@example.com" required>
         </div>
         <div class="form-field">
-          <div class="form-label">Phone</div>
-          <input type="tel" name="phone" placeholder="+63 ...">
-        </div>
-        <div class="form-field">
           <div class="form-label">How did you hear about us</div>
           <input type="text" name="referred_by" placeholder="From a friend, Instagram, etc.">
         </div>
-        <label class="form-consent">
-          <input type="checkbox" name="consent" value="yes">
-          <span>I agree to receive event updates and accept the <a href="/privacy">Privacy Policy</a>.</span>
-        </label>
+        <div class="form-consent-group">
+          <label class="form-consent">
+            <input type="checkbox" name="sms_consent" id="sms-consent" value="yes" required>
+            <span>By checking this box, I consent to receive non-marketing text messages from <strong>Cris Vinson and team</strong> about event updates, reminders, and announcements. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+          </label>
+          <label class="form-consent">
+            <input type="checkbox" name="marketing_consent" id="marketing-consent" value="yes" required>
+            <span>By checking this box, I consent to receive marketing and promotional messages including special offers, new programs, and updates from <strong>Cris Vinson and team</strong> at the phone number provided. Frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+          </label>
+        </div>
         <button type="submit" class="btn-cta">
           Save my free seat
           <span class="arrow">&rarr;</span>
         </button>
         <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-        <div class="form-foot">No credit card &middot; One real workshop &middot; Given freely</div>
+        <div class="form-foot">No credit card &middot; One real workshop &middot; Given freely &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></div>
       </form>
     </div>
   </section>
@@ -576,8 +582,25 @@
         e.preventDefault();
         var data = {};
         new FormData(form).forEach(function (v, k) { data[k] = v; });
-        if (!data.email) {
+        var smsConsent = document.getElementById('sms-consent');
+        var marketingConsent = document.getElementById('marketing-consent');
+        if (!data.name || !data.name.trim()) {
+          status.textContent = 'Please enter your full name.';
+          status.className = 'form-status err';
+          return;
+        }
+        if (!data.phone || !data.phone.trim()) {
+          status.textContent = 'Please enter your phone number so we can send your reminder.';
+          status.className = 'form-status err';
+          return;
+        }
+        if (!data.email || !data.email.trim()) {
           status.textContent = 'Please enter your email so we can send your Zoom link.';
+          status.className = 'form-status err';
+          return;
+        }
+        if (!smsConsent.checked || !marketingConsent.checked) {
+          status.textContent = 'Please check both consent boxes to continue.';
           status.className = 'form-status err';
           return;
         }
