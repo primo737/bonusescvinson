@@ -1644,10 +1644,239 @@ img.brand-logo.size-lg { width: 64px; height: 64px; }
 .opt-out {
   text-align: center;
   max-width: 600px;
-  margin: var(--s-7) auto 0;
+  margin: var(--s-5) auto 0;
   font-family: var(--font-display); font-style: italic;
   font-size: 16px; line-height: 1.5;
   color: var(--c-mute);
+}
+
+/* Upsell jump link — third path from buy buttons to share mechanics */
+.upsell-jump {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 560px;
+  margin: var(--s-7) auto 0;
+  padding: var(--s-5) var(--s-6);
+  background: var(--c-surface);
+  border: 1.5px dashed var(--c-rule-strong);
+  border-radius: var(--r-md);
+  color: var(--c-ink);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.upsell-jump:hover {
+  border-color: var(--c-primary);
+  border-style: solid;
+  background: var(--c-cream-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  color: var(--c-ink);
+}
+.upsell-jump-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--c-warm);
+}
+.upsell-jump-line {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px; line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+}
+.upsell-jump-line em {
+  font-style: italic;
+  color: var(--c-primary);
+  font-weight: 500;
+}
+.upsell-jump-arrow {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--c-primary);
+  margin-top: 4px;
+  transition: transform 0.2s;
+}
+.upsell-jump:hover .upsell-jump-arrow {
+  transform: translateY(4px);
+}
+
+
+/* ==========================================================================
+   15. THANK-YOU PAGE: SHARE MECHANICS (how it works + FAQ)
+   ========================================================================== */
+
+.how-it-works {
+  background: var(--c-bg);
+  padding: var(--s-9) 0;
+  border-top: 1px solid var(--c-rule);
+}
+.how-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.how-head {
+  text-align: center;
+  margin-bottom: var(--s-8);
+}
+.how-head .eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--c-warm);
+  margin-bottom: var(--s-3);
+}
+.how-head h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--c-ink);
+}
+.how-head h2 em {
+  font-style: italic;
+  color: var(--c-primary);
+  font-weight: 500;
+}
+.how-head .lede {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 18px; line-height: 1.45;
+  color: var(--c-mute);
+  max-width: 620px;
+  margin: var(--s-4) auto 0;
+}
+
+/* Three-step grid */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-5);
+  margin-bottom: var(--s-8);
+}
+.step {
+  background: var(--c-surface);
+  border: 2px solid var(--c-rule);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+  display: flex; flex-direction: column; gap: var(--s-3);
+  position: relative;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.step:hover {
+  border-color: var(--c-ink);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.step-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 0.85;
+  color: var(--c-warm);
+  font-variation-settings: "opsz" 144;
+  margin-bottom: var(--s-2);
+}
+.step h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+}
+.step p {
+  font-family: var(--font-body);
+  font-size: 15px; line-height: 1.5;
+  color: var(--c-body);
+}
+
+/* Mechanics FAQ block */
+.mechanics-faq {
+  background: var(--c-bg-warm);
+  border: 1.5px solid var(--c-rule);
+  border-radius: var(--r-md);
+  padding: var(--s-7) var(--s-6);
+  margin-bottom: var(--s-7);
+}
+.mechanics-faq-head {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--c-mute);
+  margin-bottom: var(--s-5);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--c-rule-strong);
+}
+.faq-row {
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--c-rule);
+}
+.faq-row:first-of-type {
+  padding-top: 0;
+}
+.faq-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.faq-q {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  margin-bottom: var(--s-2);
+}
+.faq-a {
+  font-family: var(--font-body);
+  font-size: 15px; line-height: 1.55;
+  color: var(--c-body);
+}
+
+/* Back-to-share-buttons CTA */
+.how-cta-row {
+  text-align: center;
+}
+.how-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: var(--c-ink);
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 700; font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.how-cta:hover {
+  background: var(--c-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+.how-cta-arrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .how-it-works { padding: var(--s-7) 0; }
+  .how-head { margin-bottom: var(--s-7); }
+  .upsell-jump { padding: var(--s-4) var(--s-5); }
+  .upsell-jump-line { font-size: 18px; }
+  .mechanics-faq { padding: var(--s-5) var(--s-4); }
 }
 
 @media (max-width: 900px) {
