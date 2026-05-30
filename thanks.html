@@ -159,13 +159,13 @@
         </div>
 
         <div class="share-buttons">
-          <a class="share-btn wa" href="https://wa.me/?text=I%20just%20signed%20up%20for%20the%20AI%20Hour%20Workshop%2C%20a%20free%204-hour%20Saturday%20session%20with%20Cris%20Vinson%20on%20how%20to%20actually%20use%20Claude%20in%20your%20business.%20No%20code.%20Saturday%20June%2013.%20Save%20your%20seat%3A%20https%3A%2F%2Fbonuses.crisvinson.com%2F%20%23AIHourWorkshop" target="_blank" rel="noopener">
+          <a class="share-btn wa" id="share-wa" href="#" target="_blank" rel="noopener">
             WhatsApp
           </a>
-          <a class="share-btn msg" href="https://www.facebook.com/dialog/send?app_id=&link=https%3A%2F%2Fbonuses.crisvinson.com%2F&redirect_uri=https%3A%2F%2Fbonuses.crisvinson.com%2F" target="_blank" rel="noopener">
+          <a class="share-btn msg" id="share-msg" href="#" target="_blank" rel="noopener">
             Messenger
           </a>
-          <a class="share-btn email" href="mailto:?subject=AI%20Hour%20Workshop%2C%20free%20Saturday%20session&body=Hey%2C%20I%20just%20signed%20up%20for%20this%20and%20thought%20of%20you.%20A%20free%204-hour%20Saturday%20workshop%20with%20Cris%20Vinson%20on%20how%20to%20actually%20use%20Claude%20in%20your%20business.%20No%20code%2C%20no%20fluff.%20Saturday%20June%2013.%0A%0Ahttps%3A%2F%2Fbonuses.crisvinson.com%2F%0A%0A%23AIHourWorkshop">
+          <a class="share-btn email" id="share-email" href="#">
             Email
           </a>
           <button class="share-btn copy" onclick="copyShare()">
@@ -185,8 +185,107 @@
 
       </div>
 
+      <!-- Share Kit: paste-ready posts + FB profile badges -->
+      <div class="share-kit" id="share-kit">
+
+        <div class="share-kit-head">
+          <span class="eyebrow">Take it to your feed</span>
+          <h3>Share Kit. <em>Paste-ready</em>.</h3>
+          <p class="deck">8 assets you can drop straight onto your feed. Pick one, copy the caption, post.</p>
+        </div>
+
+        <div class="share-kit-subhead">Event posters &middot; 1:1</div>
+
+        <div class="share-kit-grid posts">
+
+          <article class="share-kit-card">
+            <div class="preview"><img src="assets/share-kit/event-poster-01-speaker-hero.png" alt="Speaker hero event poster"></div>
+            <div class="label">Speaker hero</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="poster-01" onclick="copyKitCaption('poster-01')">Copy caption</button>
+              <a class="btn-dl" href="assets/share-kit/event-poster-01-speaker-hero.png" download>Download</a>
+            </div>
+          </article>
+
+          <article class="share-kit-card">
+            <div class="preview"><img src="assets/share-kit/event-poster-02-date-stamp.png" alt="06.13 date-stamp event poster"></div>
+            <div class="label">06.13 date stamp</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="poster-02" onclick="copyKitCaption('poster-02')">Copy caption</button>
+              <a class="btn-dl" href="assets/share-kit/event-poster-02-date-stamp.png" download>Download</a>
+            </div>
+          </article>
+
+          <article class="share-kit-card">
+            <div class="preview"><img src="assets/share-kit/event-poster-03-curiosity.png" alt="Curiosity headline event poster"></div>
+            <div class="label">Curiosity headline</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="poster-03" onclick="copyKitCaption('poster-03')">Copy caption</button>
+              <a class="btn-dl" href="assets/share-kit/event-poster-03-curiosity.png" download>Download</a>
+            </div>
+          </article>
+
+          <article class="share-kit-card">
+            <div class="preview"><img src="assets/share-kit/event-poster-04-value-stack.png" alt="Value stack event poster"></div>
+            <div class="label">Value stack</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="poster-04" onclick="copyKitCaption('poster-04')">Copy caption</button>
+              <a class="btn-dl" href="assets/share-kit/event-poster-04-value-stack.png" download>Download</a>
+            </div>
+          </article>
+
+          <article class="share-kit-card">
+            <div class="preview"><img src="assets/share-kit/event-poster-05-bring-laptop.png" alt="Bring your laptop event poster"></div>
+            <div class="label">Bring your laptop</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="poster-05" onclick="copyKitCaption('poster-05')">Copy caption</button>
+              <a class="btn-dl" href="assets/share-kit/event-poster-05-bring-laptop.png" download>Download</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="share-kit-subhead">Facebook profile badges</div>
+
+        <div class="share-kit-grid badges">
+
+          <article class="share-kit-card">
+            <div class="preview circle"><img src="assets/share-kit/fb-badge-01-im-going.png" alt="I'm Going badge"></div>
+            <div class="label">"I'm Going" badge</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="badge-01" onclick="copyKitCaption('badge-01')">Copy how-to</button>
+              <a class="btn-dl" href="assets/share-kit/fb-badge-01-im-going.png" download>Download</a>
+            </div>
+          </article>
+
+          <article class="share-kit-card">
+            <div class="preview circle"><img src="assets/share-kit/fb-badge-02-attendee-ring.png" alt="Attendee ring badge"></div>
+            <div class="label">"Attendee" ring badge</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="badge-02" onclick="copyKitCaption('badge-02')">Copy how-to</button>
+              <a class="btn-dl" href="assets/share-kit/fb-badge-02-attendee-ring.png" download>Download</a>
+            </div>
+          </article>
+
+          <article class="share-kit-card">
+            <div class="preview circle"><img src="assets/share-kit/fb-badge-03-date-minimal.png" alt="06.13 date badge"></div>
+            <div class="label">"06.13" minimal badge</div>
+            <div class="actions">
+              <button class="btn-copy" data-copy="badge-03" onclick="copyKitCaption('badge-03')">Copy how-to</button>
+              <a class="btn-dl" href="assets/share-kit/fb-badge-03-date-minimal.png" download>Download</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="share-kit-foot">
+          Tag <strong>#AIHourWorkshop</strong> when you post. Use your referral link from above so the share counts toward your bonuses.
+        </p>
+
+      </div>
+
       <div class="portal-link">
-        <a href="portal.html">
+        <a id="portal-link" href="portal.html">
           Open your portal
           <span>&rarr;</span>
         </a>
@@ -351,8 +450,48 @@
   </footer>
 
   <script>
-    const SHARE_URL = 'https://bonuses.crisvinson.com/?ref=your-name';
+    // Personalized share URL: derived from ?slug=<own_slug> returned by n8n /thanks redirect.
+    // ?fn=<first_name> rides along for the portal greeting. Persisted to sessionStorage so a
+    // refresh without query params still shows the right link.
+    const _params = new URLSearchParams(window.location.search);
+    let _slug = (_params.get('slug') || '').trim();
+    let _fn = (_params.get('fn') || '').trim();
+    try {
+      if (_slug) sessionStorage.setItem('cff_slug', _slug); else _slug = sessionStorage.getItem('cff_slug') || '';
+      if (_fn) sessionStorage.setItem('cff_fn', _fn); else _fn = sessionStorage.getItem('cff_fn') || '';
+    } catch (e) {}
+
+    const SHARE_URL = _slug
+      ? 'https://bonuses.crisvinson.com/?ref=' + encodeURIComponent(_slug)
+      : 'https://bonuses.crisvinson.com/';
     const SHARE_TEXT = 'I just signed up for the AI Hour Workshop, a free 4-hour Saturday session with Cris Vinson on how to actually use Claude in your business. No code. Saturday June 13. ' + SHARE_URL + ' #AIHourWorkshop';
+
+    // Surface the personalized URL in the visible "Your link" row.
+    document.addEventListener('DOMContentLoaded', function () {
+      const refUrl = document.getElementById('ref-url');
+      if (refUrl) refUrl.textContent = SHARE_URL.replace(/^https?:\/\//, '');
+
+      // Personalize social-share button hrefs with the slug-embedded SHARE_URL.
+      const enc = encodeURIComponent;
+      const waText = 'I just signed up for the AI Hour Workshop, a free 4-hour Saturday session with Cris Vinson on how to actually use Claude in your business. No code. Saturday June 13. Save your seat: ' + SHARE_URL + ' #AIHourWorkshop';
+      const emailSubject = 'AI Hour Workshop, free Saturday session';
+      const emailBody = 'Hey, I just signed up for this and thought of you. A free 4-hour Saturday workshop with Cris Vinson on how to actually use Claude in your business. No code, no fluff. Saturday June 13.\n\n' + SHARE_URL + '\n\n#AIHourWorkshop';
+      const waBtn = document.getElementById('share-wa');
+      const msgBtn = document.getElementById('share-msg');
+      const emailBtn = document.getElementById('share-email');
+      if (waBtn) waBtn.href = 'https://wa.me/?text=' + enc(waText);
+      if (msgBtn) msgBtn.href = 'https://www.facebook.com/dialog/send?app_id=&link=' + enc(SHARE_URL) + '&redirect_uri=' + enc(SHARE_URL);
+      if (emailBtn) emailBtn.href = 'mailto:?subject=' + enc(emailSubject) + '&body=' + enc(emailBody);
+
+      // Portal CTA carries id (slug) + fn so the portal renders the user's count, name, and rank.
+      const portalLink = document.getElementById('portal-link');
+      if (portalLink && _slug) {
+        const q = new URLSearchParams();
+        q.set('id', _slug);
+        if (_fn) q.set('fn', _fn);
+        portalLink.href = 'portal.html?' + q.toString();
+      }
+    });
 
     function copyShare() {
       navigator.clipboard.writeText(SHARE_TEXT).then(() => {
@@ -365,6 +504,31 @@
     function copyRef() {
       navigator.clipboard.writeText(SHARE_URL).then(() => {
         const btn = document.querySelector('.ref-link .copy-btn');
+        const old = btn.textContent.trim();
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = old, 1800);
+      });
+    }
+
+    // Share Kit captions — paired to the 8 assets in #share-kit.
+    // Keep this in sync with caption-pack.md in the share-campaign-creatives folder.
+    const KIT_CAPTIONS = {
+      'poster-01': "Free 4-hour Claude workshop with Cris Vinson. Saturday June 13, 2PM Manila, live on Zoom.\n\nIf you're a founder and you've been meaning to figure out how to actually use Claude in your business (no code, no theory), this is the one.\n\nRegister: " + SHARE_URL + "\n\n#AIHourWorkshop",
+      'poster-02': "Save the date: Saturday June 13. 2PM Manila. 4 hours live on Zoom. Free.\n\nClaude for Founders with Cris Vinson. The workshop is built around how he actually uses Claude in his business every day.\n\nRegister: " + SHARE_URL + "\n\n#AIHourWorkshop",
+      'poster-03': "How are founders actually using Claude?\n\n4 hours live with Cris Vinson, Saturday June 13. He walks through every workflow he runs through Claude, screen-shared, no code, no theory.\n\nFree. Register: " + SHARE_URL + "\n\n#AIHourWorkshop",
+      'poster-04': "4 things you'll build at the free Claude for Founders workshop on Saturday:\n\n01 Claude agents (no code)\n02 Sales calls on autopilot\n03 Ops workflows that scale\n04 Project structures that hold\n\nJune 13, 2PM Manila, 4 hours live with Cris Vinson.\n\nRegister: " + SHARE_URL + "\n\n#AIHourWorkshop",
+      'poster-05': "Bring your laptop and one real business question.\n\nCris Vinson walks you through how he actually uses Claude in his business, 4 hours live, no code, no theory. Saturday June 13, 2PM Manila. Free.\n\nRegister: " + SHARE_URL + "\n\n#AIHourWorkshop",
+      'badge-01': "How to use: download the badge, then upload as your Facebook profile pic until June 13. People will ask you about it. Send them " + SHARE_URL,
+      'badge-02': "How to use: swap your FB profile pic to this ring badge until Saturday. The 'attendee' frame starts conversations on its own. Send curious friends to " + SHARE_URL,
+      'badge-03': "How to use: drop this as your FB profile pic for the next two weeks. Quiet reminder for you, low-effort signal for everyone who sees it. Workshop link: " + SHARE_URL,
+    };
+
+    function copyKitCaption(key) {
+      const text = KIT_CAPTIONS[key];
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('[data-copy="' + key + '"]');
+        if (!btn) return;
         const old = btn.textContent.trim();
         btn.textContent = 'Copied!';
         setTimeout(() => btn.textContent = old, 1800);

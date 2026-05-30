@@ -177,6 +177,8 @@
       </div>
 
       <form class="reg-form" id="reg-form" action="https://n8n.cvinson.cloud/webhook/aihour-workshop-signup" method="post" novalidate>
+        <!-- Hidden referrer slug: captured from ?ref= URL param on landing, persisted to sessionStorage -->
+        <input type="hidden" name="ref" id="ref-input" value="">
         <div class="form-field">
           <div class="form-label">Full Name <span class="form-req">required</span></div>
           <input type="text" name="name" placeholder="Your full name" required>
@@ -570,7 +572,24 @@
     })();
   </script>
 
-  <!-- Registration form: submit to n8n webhook, redirect to /thanks on success -->
+  <!-- Referrer capture: read ?ref= from URL, write to hidden input, persist via sessionStorage so it survives back/forward navigation -->
+  <script>
+    (function () {
+      var refInput = document.getElementById('ref-input');
+      if (!refInput) return;
+      var params = new URLSearchParams(window.location.search);
+      var urlRef = (params.get('ref') || '').trim();
+      var saved = '';
+      try { saved = sessionStorage.getItem('cff_ref') || ''; } catch (e) {}
+      var ref = urlRef || saved;
+      if (urlRef) {
+        try { sessionStorage.setItem('cff_ref', urlRef); } catch (e) {}
+      }
+      refInput.value = ref;
+    })();
+  </script>
+
+  <!-- Registration form: submit to n8n webhook, redirect to /thanks?slug=...&fn=... on success -->
   <script>
     (function () {
       var form = document.getElementById('reg-form');
@@ -614,8 +633,12 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         }).then(function (r) {
-          if (r.ok) { window.location.href = '/thanks'; return; }
-          throw new Error('Submission failed with status ' + r.status);
+          if (!r.ok) throw new Error('Submission failed with status ' + r.status);
+          return r.json().catch(function () { return {}; });
+        }).then(function (body) {
+          // Follow the webhook's redirect (carries ?slug=...&fn=... for personalized share link)
+          var dest = (body && typeof body.redirect === 'string' && body.redirect) ? body.redirect : '/thanks';
+          window.location.href = dest;
         }).catch(function (err) {
           btn.disabled = false;
           btn.innerHTML = oldLabel;

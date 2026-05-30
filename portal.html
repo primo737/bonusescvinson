@@ -135,36 +135,12 @@
       <h3>Top founders sharing <em>this week</em>.</h3>
     </div>
 
-    <div class="leaderboard">
-      <div class="leaderboard-row">
-        <div class="lb-rank top">01</div>
-        <div class="lb-name">Royce<small>Community Builder &middot; Davao</small></div>
-        <div class="lb-count"><strong>12</strong> shares</div>
-        <div class="lb-badge">Top spot unlocked</div>
-      </div>
-      <div class="leaderboard-row">
-        <div class="lb-rank top">02</div>
-        <div class="lb-name">BaylanOlera<small>Coach &middot; Cebu</small></div>
-        <div class="lb-count"><strong>8</strong> shares</div>
-        <div class="lb-badge">Project template unlocked</div>
-      </div>
-      <div class="leaderboard-row">
-        <div class="lb-rank">03</div>
-        <div class="lb-name">Jam<small>YouTuber &middot; Manila</small></div>
-        <div class="lb-count"><strong>6</strong> shares</div>
-        <div class="lb-badge">Project template unlocked</div>
-      </div>
-      <div class="leaderboard-row you">
-        <div class="lb-rank">14</div>
-        <div class="lb-name">You<small>Your spot &middot; right now</small></div>
-        <div class="lb-count"><strong>2</strong> shares</div>
-        <div class="lb-badge">Replay unlocked</div>
-      </div>
-      <div class="leaderboard-row">
-        <div class="lb-rank">15</div>
-        <div class="lb-name">Jamrell<small>Strategist &middot; Cebu</small></div>
-        <div class="lb-count"><strong>1</strong> share</div>
-        <div class="lb-badge">Replay unlocked</div>
+    <div class="leaderboard" id="leaderboard-rows">
+      <div class="leaderboard-row" data-state="loading">
+        <div class="lb-rank">&middot;</div>
+        <div class="lb-name">Loading the leaderboard<small>Fresh signups update live</small></div>
+        <div class="lb-count"><strong>&mdash;</strong></div>
+        <div class="lb-badge">&nbsp;</div>
       </div>
     </div>
   </section>
@@ -272,23 +248,135 @@
     tick();
     setInterval(tick, 1000);
 
-    // Member name from ?name= URL param (placeholder for GHL magic-link wiring)
+    // ---- Member identity ----
+    // ?id=<slug> (from thanks.html portal CTA) is the canonical identifier.
+    // ?fn=<first_name> drives the greeting.
+    // ?name= is a legacy param kept for backwards compatibility.
     const params = new URLSearchParams(location.search);
-    const name = params.get('name');
-    if (name) document.getElementById('member-name').textContent = name;
+    const memberId = (params.get('id') || '').trim().toLowerCase();
+    const memberFn = (params.get('fn') || params.get('name') || '').trim();
+    try {
+      if (memberId) sessionStorage.setItem('cff_slug', memberId);
+      if (memberFn) sessionStorage.setItem('cff_fn', memberFn);
+    } catch (e) {}
+    if (memberFn) document.getElementById('member-name').textContent = memberFn;
 
-    // Referral count from ?shares= URL param (placeholder for GHL backend)
-    const shares = parseInt(params.get('shares'), 10);
-    if (!isNaN(shares)) {
-      document.getElementById('ref-count-num').textContent = shares;
-      const pct = Math.min(100, (shares / 10) * 100);
+    // ---- Leaderboard tiers ----
+    const TIERS = [1, 3, 5, 10]; // share counts that unlock each prize tier
+    function tierLabel(count) {
+      if (count >= 10) return 'Top spot unlocked';
+      if (count >= 5) return 'Project template unlocked';
+      if (count >= 3) return 'Prompt pack unlocked';
+      if (count >= 1) return 'Replay unlocked';
+      return 'Share once to unlock the replay';
+    }
+    function applyOwnState(count) {
+      const safe = isNaN(count) ? 0 : count;
+      document.getElementById('ref-count-num').textContent = safe;
+      const pct = Math.min(100, (safe / 10) * 100);
       document.getElementById('ref-bar').style.width = pct + '%';
-      // Update unlock states
       document.querySelectorAll('.tier-mini-item').forEach((item, i) => {
-        const thresholds = [1, 3, 5, 10];
-        if (shares >= thresholds[i]) item.classList.add('unlocked');
+        if (safe >= TIERS[i]) item.classList.add('unlocked');
         else item.classList.remove('unlocked');
       });
+    }
+
+    // ---- Leaderboard CSV ----
+    // Published from the "Leaderboard" tab of the "Claude for Founders — Referrals" Google Sheet.
+    // Format: 3 columns: slug, display_name, count. First row is header.
+    // TODO(cris): paste the published-to-web CSV URL below once the Sheet is published.
+    const LEADERBOARD_CSV = '';
+
+    function parseCsv(text) {
+      // Simple CSV parser. Display names are first-names only (no commas expected).
+      // If we ever need real CSV escaping, swap for a proper parser.
+      const rows = text.replace(/\r\n/g, '\n').split('\n').filter(Boolean);
+      const header = rows.shift().split(',').map(s => s.trim().toLowerCase());
+      const iSlug = header.indexOf('slug');
+      const iName = header.indexOf('display_name');
+      const iCount = header.indexOf('count');
+      return rows.map(line => {
+        const cells = line.split(',').map(s => s.trim());
+        return {
+          slug: (cells[iSlug] || '').toLowerCase(),
+          name: cells[iName] || '',
+          count: parseInt(cells[iCount], 10) || 0,
+        };
+      }).filter(r => r.slug);
+    }
+
+    function renderLeaderboard(rows) {
+      const host = document.getElementById('leaderboard-rows');
+      if (!host) return;
+      host.innerHTML = '';
+      // Sort defensively (CSV should already be sorted but trust nothing).
+      const sorted = rows.slice().sort((a, b) => b.count - a.count);
+      // Find user's own rank (1-indexed) and row.
+      let ownRank = -1;
+      if (memberId) {
+        const idx = sorted.findIndex(r => r.slug === memberId);
+        if (idx >= 0) ownRank = idx + 1;
+      }
+      // Render top 15.
+      const top = sorted.slice(0, 15);
+      // If the user is outside the top 15, append a "you" row at the end.
+      if (memberId && ownRank > 15) {
+        top.push(Object.assign({}, sorted[ownRank - 1], { _rank: ownRank, _appended: true }));
+      }
+      top.forEach((row, idx) => {
+        const rank = row._rank || (idx + 1);
+        const isYou = memberId && row.slug === memberId;
+        const div = document.createElement('div');
+        div.className = 'leaderboard-row' + (isYou ? ' you' : '');
+        div.innerHTML =
+          '<div class="lb-rank' + (rank <= 3 ? ' top' : '') + '">' + String(rank).padStart(2, '0') + '</div>' +
+          '<div class="lb-name">' + (isYou ? 'You' : escapeHtml(row.name || row.slug)) + '<small>' + (isYou ? 'Your spot &middot; right now' : 'Founder building with Claude') + '</small></div>' +
+          '<div class="lb-count"><strong>' + row.count + '</strong> share' + (row.count === 1 ? '' : 's') + '</div>' +
+          '<div class="lb-badge">' + escapeHtml(tierLabel(row.count)) + '</div>';
+        host.appendChild(div);
+      });
+      // Drive the user's own progress card.
+      const ownRow = memberId ? sorted.find(r => r.slug === memberId) : null;
+      applyOwnState(ownRow ? ownRow.count : 0);
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+    }
+
+    function showLeaderboardError(msg) {
+      const host = document.getElementById('leaderboard-rows');
+      if (!host) return;
+      host.innerHTML =
+        '<div class="leaderboard-row" data-state="empty">' +
+          '<div class="lb-rank">&middot;</div>' +
+          '<div class="lb-name">' + escapeHtml(msg) + '<small>Refresh in a minute or two if it stays this way.</small></div>' +
+          '<div class="lb-count"><strong>&mdash;</strong></div>' +
+          '<div class="lb-badge">&nbsp;</div>' +
+        '</div>';
+    }
+
+    if (!LEADERBOARD_CSV) {
+      // Sheet not yet published. Show a friendly placeholder and zero out the own-progress card.
+      showLeaderboardError('Leaderboard goes live after the first shares roll in.');
+      applyOwnState(0);
+    } else {
+      fetch(LEADERBOARD_CSV, { cache: 'no-store' })
+        .then(r => r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status)))
+        .then(text => {
+          const rows = parseCsv(text);
+          if (!rows.length) {
+            showLeaderboardError('No shares logged yet. Be the first.');
+            applyOwnState(0);
+            return;
+          }
+          renderLeaderboard(rows);
+        })
+        .catch(err => {
+          console.warn('Leaderboard fetch failed:', err);
+          showLeaderboardError('Leaderboard is taking a breath. Hang tight.');
+          applyOwnState(0);
+        });
     }
   </script>
 
