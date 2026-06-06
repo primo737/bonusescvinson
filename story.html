@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Getting Locked Out of Claude Taught Me About AI | Claude for Founders</title>
+  <meta name="description" content="I got locked out of Claude. So I went exploring. What I found changed how I work — and what I think most non-tech founders are missing. The workshop is June 13.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bonuses.crisvinson.com/story">
+  <meta name="theme-color" content="#c44e0a">
+  <link rel="icon" type="image/webp" href="/assets/brand/oz-logo.webp">
+  <link rel="apple-touch-icon" href="/assets/brand/oz-logo.webp">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Getting Locked Out of Claude Taught Me About AI">
+  <meta property="og:description" content="I got locked out of Claude. So I went exploring. What I found changed how I work — and what I think most non-tech founders are missing.">
+  <meta property="og:image" content="https://bonuses.crisvinson.com/assets/photos/DSCF4913.JPG">
+  <meta property="og:url" content="https://bonuses.crisvinson.com/story">
+  <meta property="og:site_name" content="AI Hour Presents: Claude for Founders">
+  <meta property="og:locale" content="en_PH">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Getting Locked Out of Claude Taught Me About AI">
+  <meta name="twitter:description" content="I got locked out of Claude. So I went exploring. What I found changed how I work — and what I think most non-tech founders are missing.">
+  <meta name="twitter:image" content="https://bonuses.crisvinson.com/assets/photos/DSCF4913.JPG">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ── Story page ─────────────────────────────────────────────── */
+    .story-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .story-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--c-warm);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .story-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--c-ink);
+      margin-bottom: 20px;
+    }
+
+    .story-deck {
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--c-mute);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .story-byline {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 0;
+      border-top: 1px solid var(--c-rule);
+      border-bottom: 4px double var(--c-rule-strong);
+      margin-bottom: 48px;
+    }
+
+    .story-byline img {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .story-byline-text {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-mute);
+      line-height: 1.6;
+    }
+
+    .story-byline-text strong {
+      color: var(--c-ink);
+      display: block;
+    }
+
+    .story-body {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--c-body);
+    }
+
+    .story-body p { margin-bottom: 24px; }
+
+    .story-body p:first-child::first-letter {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 0.75;
+      float: left;
+      margin-right: 8px;
+      margin-top: 8px;
+      color: var(--c-warm);
+    }
+
+    .story-section-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0;
+    }
+
+    .story-section-break::before,
+    .story-section-break::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--c-rule-strong);
+    }
+
+    .story-section-label {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--c-mute);
+      white-space: nowrap;
+    }
+
+    .pullquote {
+      margin: 48px -24px;
+      padding: 32px 40px;
+      background: var(--c-bg-warm);
+      border-left: 4px solid var(--c-warm);
+    }
+
+    .pullquote p {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--c-ink);
+      margin-bottom: 0;
+    }
+
+    .pullquote p::first-letter { all: unset; }
+
+    .insight-list {
+      list-style: none;
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .insight-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .insight-num {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--c-warm);
+      padding-top: 4px;
+    }
+
+    .story-cta-block {
+      margin-top: 72px;
+      padding: 48px 40px;
+      background: var(--c-ink);
+      color: white;
+      border-radius: var(--r-md);
+      text-align: center;
+    }
+
+    .story-cta-block .eyebrow-cta {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--c-warm);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .story-cta-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .story-cta-block h2 em { color: var(--c-warm); font-style: italic; }
+
+    .story-cta-block p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.72);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-button-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-story-primary {
+      display: inline-block;
+      background: var(--c-warm);
+      color: white;
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: var(--r-full);
+      transition: background 0.15s;
+    }
+
+    .btn-story-primary:hover { background: var(--c-warm-hover); color: white; }
+
+    .btn-story-secondary {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .btn-story-secondary:hover { color: white; }
+
+    .story-meta-footer {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 4px double var(--c-rule-strong);
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--c-mute);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .story-wrap { padding: 0 20px; }
+      .pullquote { margin: 40px -8px; padding: 24px 24px; }
+      .story-cta-block { padding: 36px 24px; }
+      .story-byline img { width: 36px; height: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NEWSPAPER MASTHEAD NAV -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-left">
+        <strong>Vol. 03</strong><br>
+        June 13, 2026
+      </div>
+      <a class="masthead-center" href="index.html">
+        <img class="mark" src="assets/brand/oz-logo.webp" alt="Oz">
+        AI Hour <em>presents</em>
+      </a>
+      <div class="masthead-right">
+        <strong>Free Edition</strong>
+        Davao + Online &middot; 4 hours
+      </div>
+    </div>
+  </header>
+
+  <!-- STORY CONTENT -->
+  <main class="section">
+    <div class="story-wrap">
+
+      <span class="story-kicker">Field Notes &middot; AI &middot; Founders</span>
+
+      <h1 class="story-headline">What getting locked out of Claude taught me about AI</h1>
+
+      <p class="story-deck">I told myself I'd touch grass. Take the hint. Breathe. I didn't touch grass.</p>
+
+      <div class="story-byline">
+        <img src="assets/brand/cris-vinson-logo.png" alt="Cris Vinson">
+        <div class="story-byline-text">
+          <strong>Cris Vinson</strong>
+          Facilitator, AI Hour &middot; June 2026
+        </div>
+      </div>
+
+      <div class="story-body">
+
+        <!-- 1. BACKSTORY: The Lock-Out -->
+        <p>I got locked out of Claude.</p>
+
+        <p>Not frozen out by Anthropic. Not blocked for bad behavior. Just hit the weekly usage cap and got the message telling me to come back later. Which I knew was coming — I'd been burning through my limit faster and faster as my workflows got heavier. But knowing something is coming doesn't make it less annoying when it arrives.</p>
+
+        <p>I told myself I'd touch grass. Take the hint. Breathe.</p>
+
+        <p>I didn't touch grass.</p>
+
+        <!-- Section break -->
+        <div class="story-section-break">
+          <span class="story-section-label">The Detour</span>
+        </div>
+
+        <!-- 2. THE WALL: OpenClaw, Hermes, Odysseus -->
+        <p>I had workflows running. Agents mid-build. A deadline I was pretending didn't exist. The last thing I wanted was a forced pause. So I did what any reasonable person does when their main tool goes down: I looked for a workaround.</p>
+
+        <p>That's how I found OpenClaw. And then Hermes. And then Odysseus — three open-source AI tools from a community that is genuinely hell-bent on making AI use accessible, affordable, and out from under any subscription limit.</p>
+
+        <p>OpenClaw held my attention for about twenty minutes, until I saw the first API bill. Twenty dollars. In one hour. Then came the security warnings. Then the setup complexity. Then the realization that "run it locally" meant "with a GPU you don't own."</p>
+
+        <p>So I kept Hermes and Odysseus open in other tabs and started poking at them, half-convinced I'd find my workaround. I didn't. But something else happened instead.</p>
+
+        <!-- Pullquote -->
+        <div class="pullquote">
+          <p>Using a completely different tool showed me something I couldn't see from inside Claude: my current workflow was small.</p>
+        </div>
+
+        <!-- Section break -->
+        <div class="story-section-break">
+          <span class="story-section-label">The Revelation</span>
+        </div>
+
+        <!-- 3. THE EPIPHANY -->
+        <p>Not small in effort. Small in possibility.</p>
+
+        <p>I had been using Claude the way most people use a calculator — tap in a question, read the answer, close the tab. Prompt in, answer out. Start fresh every time. I had no idea what it could actually do when you stopped treating it like a search engine and started treating it like a collaborator.</p>
+
+        <p>Looking at OpenClaw's architecture — the way it handled multi-step tasks, the way it passed context between agents, the way it was designed to <em>do things</em> rather than just answer things — I could see the shape of what was possible. And then I looked at my own setup and realized: Claude could already do all of that. I just hadn't asked it to.</p>
+
+        <p>The lock-out wasn't punishment. It was perspective.</p>
+
+        <!-- Section break -->
+        <div class="story-section-break">
+          <span class="story-section-label">Going Deeper</span>
+        </div>
+
+        <!-- 4. THE PLAN -->
+        <p>I put OpenClaw down and picked Claude back up. But differently.</p>
+
+        <p>Instead of dabbling with alternatives, I decided to go deeper into what I already had. I learned multi-agent trees — how to chain Claude instances so they could hand work off to each other without waiting for me. I built headless workflows that ran without my hand-holding. I gave my agents hands and feet: the ability to browse, write files, trigger other processes, loop back with results.</p>
+
+        <p>The Claude I came back to wasn't a chat window. It was infrastructure.</p>
+
+        <!-- 5. THE CONFLICT -->
+        <p>That depth came with costs. The more I could do, the more compute I needed. I went from the $20 plan to the $100 plan to the $200 max plan in three months. Then I got downsized. The $200 plan had to go.</p>
+
+        <p>I dropped to $100. And with my usage where it was — multi-agent containers, heavy workflows, back-to-back tasks — that meant cooldowns. One to four hours, every other hour. My tool environment couldn't support my containers anymore and I was stuck waiting out the clock.</p>
+
+        <p>I needed a sidearm.</p>
+
+        <!-- Section break -->
+        <div class="story-section-break">
+          <span class="story-section-label">The Sidearm</span>
+        </div>
+
+        <!-- 6. THE ACHIEVEMENT -->
+        <p>That's when I came back around to the open-source world — not to replace Claude, but to understand it properly. I ran OpenClaw, Hermes, and Odysseus locally during cooldown windows. My MacBook Pro, 32&nbsp;GB of RAM, the machine I trusted with everything, hit 35&nbsp;GB out of 36&nbsp;GB during the heavier local model runs. The fan sounded like it was filing a formal complaint.</p>
+
+        <p>But I learned three things that actually mattered:</p>
+
+        <ul class="insight-list">
+          <li>
+            <span class="insight-num">01</span>
+            <span>The open-source AI community is genuinely building toward accessibility. Running local models is not a hobbyist project anymore — setting this up may be the next hands-on IT service. The community is moving fast.</span>
+          </li>
+          <li>
+            <span class="insight-num">02</span>
+            <span>Local models minimize your API costs and your environmental footprint. Theoretically. In practice, the compute cost just moves from cloud servers to your own hardware. The footprint shifts; it doesn't disappear.</span>
+          </li>
+          <li>
+            <span class="insight-num">03</span>
+            <span>It burns through resources. My 32&nbsp;GB machine was hitting 35&nbsp;GB of memory usage. Local AI is not a lightweight backup option — it's a different kind of investment.</span>
+          </li>
+        </ul>
+
+        <p>Knowing all of that, I made my peace with the limits. I use the cooldown hours to think instead of build. And I keep a local model running as a sidearm — for small tasks, fast lookups, the things that don't need Claude's full capability. The two tools don't compete. They cover different jobs.</p>
+
+        <!-- Pullquote -->
+        <div class="pullquote">
+          <p>Most non-tech founders are using Claude the way I was using it before the lock-out. One prompt at a time. Closing the tab and wondering if this AI thing is really as big as everyone says.</p>
+        </div>
+
+        <!-- Section break -->
+        <div class="story-section-break">
+          <span class="story-section-label">What This Means For You</span>
+        </div>
+
+        <!-- 7. THE BRIDGE -->
+        <p>It is. But you won't see it from inside the chat window.</p>
+
+        <p>The constraint that locked me out also showed me the ceiling I was operating under. I had been getting value from Claude — real value — but I had no idea there was a whole other floor above me. The only reason I found it was because something forced me to look up.</p>
+
+        <p>The workshop on June&nbsp;13 is the perspective I couldn't give myself.</p>
+
+        <p>In four hours, you will ship something real — not a draft, not a plan, an actual page that lives on the internet. You will automate one task that currently drains your week. And you will leave with a Claude setup that feels less like a tool you use and more like a working relationship you can build on.</p>
+
+        <p>That is the other side of the wall. You don't have to wait for a lock-out to find it.</p>
+
+        <!-- CTA BLOCK -->
+        <div class="story-cta-block">
+          <span class="eyebrow-cta">Live Workshop &middot; June 13, 2026 &middot; Davao + Online</span>
+          <h2>Claude for <em>Non-Tech Founders</em></h2>
+          <p>A free 4-hour Saturday workshop. Walk out with a real offer page shipped, one weekly task automated, and Claude actually working for your business.</p>
+          <div class="cta-button-row">
+            <a href="index.html#register" class="btn-story-primary">Claim your free seat</a>
+            <a href="vip.html" class="btn-story-secondary">Or upgrade to VIP &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Story footer -->
+        <div class="story-meta-footer">
+          <span>Cris Vinson &middot; AI Hour</span>
+          <span>Saturday, June 13, 2026 &middot; 2:00&nbsp;PM PHT</span>
+        </div>
+
+      </div><!-- /.story-body -->
+    </div><!-- /.story-wrap -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>AI Hour</strong><br>
+        Claude for Founders
+      </div>
+      <div class="footer-center">
+        <img class="footer-mark" src="assets/brand/oz-logo.webp" alt="Oz">
+        AI Hour <em>presents</em>
+      </div>
+      <div class="footer-right">
+        &copy; 2026 AI Hour.<br>
+        All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
+</body>
+</html>
