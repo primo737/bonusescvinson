@@ -281,29 +281,8 @@
       });
     }
 
-    // ---- Leaderboard CSV ----
-    // Published from the "Leaderboard" tab of the "Claude for Founders — Referrals" Google Sheet.
-    // Format: 3 columns: slug, display_name, count. First row is header.
-    // TODO(cris): paste the published-to-web CSV URL below once the Sheet is published.
-    const LEADERBOARD_CSV = '';
-
-    function parseCsv(text) {
-      // Simple CSV parser. Display names are first-names only (no commas expected).
-      // If we ever need real CSV escaping, swap for a proper parser.
-      const rows = text.replace(/\r\n/g, '\n').split('\n').filter(Boolean);
-      const header = rows.shift().split(',').map(s => s.trim().toLowerCase());
-      const iSlug = header.indexOf('slug');
-      const iName = header.indexOf('display_name');
-      const iCount = header.indexOf('count');
-      return rows.map(line => {
-        const cells = line.split(',').map(s => s.trim());
-        return {
-          slug: (cells[iSlug] || '').toLowerCase(),
-          name: cells[iName] || '',
-          count: parseInt(cells[iCount], 10) || 0,
-        };
-      }).filter(r => r.slug);
-    }
+    // ---- Leaderboard API ----
+    const LEADERBOARD_API = 'https://n8n.cvinson.cloud/webhook/aihour-leaderboard';
 
     function renderLeaderboard(rows) {
       const host = document.getElementById('leaderboard-rows');
@@ -356,28 +335,21 @@
         '</div>';
     }
 
-    if (!LEADERBOARD_CSV) {
-      // Sheet not yet published. Show a friendly placeholder and zero out the own-progress card.
-      showLeaderboardError('Leaderboard goes live after the first shares roll in.');
-      applyOwnState(0);
-    } else {
-      fetch(LEADERBOARD_CSV, { cache: 'no-store' })
-        .then(r => r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status)))
-        .then(text => {
-          const rows = parseCsv(text);
-          if (!rows.length) {
-            showLeaderboardError('No shares logged yet. Be the first.');
-            applyOwnState(0);
-            return;
-          }
-          renderLeaderboard(rows);
-        })
-        .catch(err => {
-          console.warn('Leaderboard fetch failed:', err);
-          showLeaderboardError('Leaderboard is taking a breath. Hang tight.');
+    fetch(LEADERBOARD_API, { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+      .then(data => {
+        if (!data.ok || !data.leaderboard || !data.leaderboard.length) {
+          showLeaderboardError('No shares logged yet. Be the first.');
           applyOwnState(0);
-        });
-    }
+          return;
+        }
+        renderLeaderboard(data.leaderboard);
+      })
+      .catch(err => {
+        console.warn('Leaderboard fetch failed:', err);
+        showLeaderboardError('Leaderboard is taking a breath. Hang tight.');
+        applyOwnState(0);
+      });
   </script>
 
   <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
