@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're In — The Bootstrap MBA</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --white:#ffffff; --off:#f8f9fb; --navy:#1b365d; --navy-deep:#0d1f3c;
+      --navy-lt:rgba(27,54,93,.08); --orange:#ff6b35; --orange-lt:rgba(255,107,53,.1);
+      --ink:#1a202c; --mid:#4a5568; --muted:#8e8e93; --border:#e2e8f0; --max:880px;
+      --serif:'Fraunces',Georgia,serif; --sans:'Archivo',-apple-system,sans-serif; --disp:'Montserrat',-apple-system,sans-serif;
+      --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--sans); background:var(--white); color:var(--ink); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    .wrap { max-width:var(--max); margin:0 auto; padding:0 1.5rem; }
+    .sec { padding:5rem 0; border-top:1px solid var(--border); }
+    .lbl { font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--orange); margin-bottom:1rem; display:block; }
+    h2.display { font-family:var(--serif); font-weight:600; color:var(--navy); letter-spacing:-.015em; line-height:1.14; font-size:clamp(1.7rem,3.4vw,2.4rem); margin-bottom:1.1rem; }
+    h2.display em { font-style:italic; color:var(--orange); }
+    .lede { font-size:1.05rem; color:var(--mid); max-width:60ch; line-height:1.78; }
+
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); }
+    .reveal.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} .hero-anim{animation:none !important;opacity:1 !important;} }
+
+    .btn { display:inline-block; background:var(--navy); color:#fff; padding:.95rem 1.9rem; border-radius:8px; font-size:.98rem; font-weight:700; text-decoration:none; transition:transform .15s, opacity .15s; text-align:center; }
+    .btn:hover { opacity:.85; transform:translateY(-1px); }
+    .btn.orange { background:var(--orange); }
+    .btn.pending { opacity:.55; cursor:default; pointer-events:none; position:relative; }
+    .btn-note { display:block; font-size:.74rem; color:var(--muted); margin-top:.5rem; font-weight:500; }
+
+    /* HERO */
+    .hero { padding:6.5rem 0 4.5rem; position:relative; overflow:hidden; text-align:left; }
+    .hero::before { content:''; position:absolute; top:-220px; right:-180px; width:640px; height:640px; border-radius:50%; background:radial-gradient(circle, rgba(255,107,53,.10) 0%, rgba(27,54,93,.06) 45%, transparent 70%); pointer-events:none; }
+    .hero-anim { opacity:0; animation:heroRise .85s cubic-bezier(.22,.61,.36,1) forwards; }
+    @keyframes heroRise { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+    .hero-eyebrow { font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--orange); margin-bottom:1.6rem; display:block; }
+    .hero h1 { font-family:var(--serif); font-size:clamp(2.4rem,5.6vw,4rem); font-weight:600; line-height:1.08; letter-spacing:-.02em; max-width:760px; margin-bottom:1.5rem; color:var(--navy); animation-delay:.12s; }
+    .hero h1 em { font-style:italic; color:var(--orange); }
+    .hero-sub { font-size:1.12rem; color:var(--mid); max-width:580px; line-height:1.78; margin-bottom:1.75rem; animation-delay:.26s; }
+    .paid-chip { display:inline-flex; align-items:center; gap:.55rem; background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.3); color:#047857; border-radius:100px; padding:.45rem 1.1rem; font-size:.85rem; font-weight:600; animation-delay:.4s; }
+    .paid-chip svg { flex:none; }
+
+    /* TIMELINE */
+    .timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:2.75rem; position:relative; }
+    .timeline::before { content:''; position:absolute; top:13px; left:calc(12.5% ); right:calc(12.5%); height:2px; background:linear-gradient(90deg, var(--orange), var(--navy)); opacity:.35; }
+    .tl-item { text-align:center; padding:0 .5rem; position:relative; }
+    .tl-dot { width:26px; height:26px; border-radius:50%; background:var(--white); border:2.5px solid var(--orange); margin:0 auto .85rem; position:relative; z-index:1; display:flex; align-items:center; justify-content:center; }
+    .tl-dot::after { content:''; width:9px; height:9px; border-radius:50%; background:var(--orange); }
+    .tl-item:last-child .tl-dot { border-color:var(--navy); background:var(--navy); }
+    .tl-item:last-child .tl-dot::after { background:#fff; }
+    .tl-when { font-family:var(--disp); font-weight:800; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--navy); }
+    .tl-what { font-size:.8rem; color:var(--muted); line-height:1.45; margin-top:.25rem; }
+
+    /* CHECKLIST */
+    .step-card { display:flex; gap:1.6rem; border:1px solid var(--border); border-radius:16px; padding:2rem; margin-bottom:1.1rem; background:var(--white); transition:border-color .2s, box-shadow .2s; align-items:flex-start; }
+    .step-card:hover { border-color:rgba(255,107,53,.45); box-shadow:0 8px 28px rgba(27,54,93,.07); }
+    .step-num { font-family:var(--disp); font-weight:900; font-size:2.1rem; line-height:1; color:var(--orange); flex:none; width:2.6rem; padding-top:.15rem; }
+    .step-body h3 { font-family:var(--serif); font-size:1.3rem; font-weight:600; color:var(--navy); margin-bottom:.45rem; }
+    .step-body p { font-size:.95rem; color:var(--mid); line-height:1.7; margin-bottom:1.1rem; max-width:54ch; }
+    .step-body .btn { padding:.75rem 1.5rem; font-size:.9rem; }
+    .intro-tpl { background:var(--off); border:1px solid var(--border); border-radius:10px; padding:1rem 1.25rem; font-size:.88rem; color:var(--mid); margin-bottom:1.1rem; line-height:1.85; }
+    .intro-tpl strong { color:var(--navy); }
+    .mail-steps { font-size:.88rem; color:var(--mid); margin-bottom:1.1rem; line-height:1.8; }
+    .mail-steps code { background:var(--navy-lt); color:var(--navy); border-radius:5px; padding:.12rem .5rem; font-family:var(--sans); font-weight:600; font-size:.85rem; }
+
+    /* BLC ACCESS */
+    .blc-band { background:linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 70%); color:#fff; border-radius:20px; padding:3.25rem 2.75rem; position:relative; overflow:hidden; }
+    .blc-band::before { content:''; position:absolute; inset:0; background:var(--grain); opacity:.18; mix-blend-mode:overlay; pointer-events:none; }
+    .blc-band::after { content:''; position:absolute; top:-140px; right:-100px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle, rgba(255,107,53,.25) 0%, transparent 65%); pointer-events:none; }
+    .blc-band .lbl { color:#ffb38f; }
+    .blc-band h2 { font-family:var(--serif); font-weight:600; font-size:clamp(1.6rem,3.2vw,2.2rem); line-height:1.16; color:#fff; margin-bottom:1rem; max-width:24ch; position:relative; }
+    .blc-band h2 em { font-style:italic; color:var(--orange); }
+    .blc-band p { color:rgba(255,255,255,.82); font-size:1rem; line-height:1.78; max-width:56ch; margin-bottom:1.75rem; position:relative; }
+    .blc-band .btn { background:var(--orange); position:relative; }
+    .blc-band .btn-note { color:rgba(255,255,255,.55); }
+
+    /* TOOLS */
+    .tool-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:2.25rem; }
+    .tool-card { border:1px solid var(--border); border-radius:14px; padding:1.75rem; background:var(--white); display:flex; flex-direction:column; transition:border-color .2s, box-shadow .2s; }
+    .tool-card:hover { border-color:rgba(27,54,93,.35); box-shadow:0 8px 24px rgba(27,54,93,.06); }
+    .tool-card::before { content:attr(data-tag); font-size:.62rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--orange); margin-bottom:.7rem; }
+    .tool-card h3 { font-family:var(--serif); font-size:1.18rem; font-weight:600; color:var(--navy); margin-bottom:.4rem; }
+    .tool-card p { font-size:.88rem; color:var(--mid); line-height:1.65; margin-bottom:1.2rem; flex:1; }
+    .tool-card .btn { padding:.65rem 1.25rem; font-size:.85rem; align-self:flex-start; }
+
+    /* FOUNDATIONS */
+    .found-list { display:grid; gap:.85rem; margin-top:2rem; counter-reset:found; }
+    .found-item { display:flex; align-items:center; gap:1.4rem; border:1px solid var(--border); border-left:4px solid var(--orange); border-radius:12px; padding:1.4rem 1.75rem; background:var(--off); }
+    .found-item::before { counter-increment:found; content:"0" counter(found); font-family:var(--disp); font-weight:900; font-size:1.5rem; color:var(--navy); opacity:.35; flex:none; }
+    .found-item h3 { font-family:var(--serif); font-size:1.12rem; font-weight:600; color:var(--navy); }
+    .found-item p { font-size:.84rem; color:var(--muted); margin-top:.15rem; }
+
+    /* BOOK */
+    .book-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:2.25rem; }
+    .book-card { border:1px solid var(--border); border-radius:16px; padding:2.25rem; background:var(--white); display:flex; flex-direction:column; }
+    .book-card.free { border-color:rgba(255,107,53,.45); background:linear-gradient(180deg, rgba(255,107,53,.05) 0%, var(--white) 55%); }
+    .book-card h3 { font-family:var(--serif); font-size:1.35rem; font-weight:600; color:var(--navy); margin-bottom:.6rem; }
+    .book-card h3 em { font-style:italic; color:var(--orange); }
+    .book-card p { font-size:.93rem; color:var(--mid); line-height:1.72; margin-bottom:1.4rem; flex:1; }
+    .embed-slot { border:1.5px dashed var(--border); border-radius:10px; padding:1.5rem; text-align:center; font-size:.85rem; color:var(--muted); margin-bottom:1.2rem; }
+
+    /* AFFILIATE */
+    .affil { background:var(--off); border:1px solid var(--border); border-radius:14px; padding:1.9rem 2.1rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+    .affil h3 { font-family:var(--serif); font-size:1.15rem; font-weight:600; color:var(--navy); margin-bottom:.3rem; }
+    .affil p { font-size:.88rem; color:var(--mid); max-width:48ch; }
+    .affil .btn { padding:.7rem 1.4rem; font-size:.88rem; flex:none; }
+
+    /* WINNERS */
+    .winners { background:linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 75%); color:#fff; border-radius:20px; padding:3rem 2.75rem; position:relative; overflow:hidden; }
+    .winners::before { content:''; position:absolute; inset:0; background:var(--grain); opacity:.16; mix-blend-mode:overlay; pointer-events:none; }
+    .winners .lbl { color:var(--orange); }
+    .winners h2 { font-family:var(--serif); font-weight:600; font-size:clamp(1.5rem,3vw,2rem); color:#fff; margin-bottom:.9rem; position:relative; }
+    .winners h2 em { font-style:italic; color:var(--orange); }
+    .winners p { color:rgba(255,255,255,.84); font-size:1rem; line-height:1.8; max-width:58ch; position:relative; }
+
+    /* FAQ */
+    .faq-item { border:1px solid var(--border); border-radius:12px; margin-bottom:.8rem; background:var(--white); overflow:hidden; }
+    .faq-item summary { list-style:none; cursor:pointer; padding:1.35rem 1.6rem; font-family:var(--serif); font-size:1.08rem; font-weight:600; color:var(--navy); display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { content:'+'; font-family:var(--disp); font-weight:700; font-size:1.3rem; color:var(--orange); flex:none; transition:transform .25s; }
+    .faq-item[open] summary::after { transform:rotate(45deg); }
+    .faq-item .faq-a { padding:0 1.6rem 1.5rem; font-size:.94rem; color:var(--mid); line-height:1.78; max-width:64ch; }
+
+    /* CLOSING */
+    .closing { display:flex; gap:2.25rem; align-items:flex-start; }
+    .closing-photo { width:96px; height:96px; border-radius:50%; object-fit:cover; flex:none; border:3px solid var(--orange-lt); }
+    .closing-note { font-size:1.02rem; color:var(--mid); line-height:1.85; max-width:60ch; }
+    .closing-note .sig { font-family:var(--serif); font-style:italic; font-size:1.35rem; color:var(--navy); margin-top:1.25rem; display:block; }
+
+    footer { border-top:1px solid var(--border); padding:2.5rem 0 3rem; text-align:center; font-size:.8rem; color:var(--muted); }
+    footer strong { font-family:var(--serif); color:var(--navy); font-weight:600; }
+
+    @media (max-width:720px) {
+      .sec { padding:3.5rem 0; }
+      .hero { padding:4.5rem 0 3.25rem; }
+      .timeline { grid-template-columns:1fr 1fr; gap:1.75rem 0; }
+      .timeline::before { display:none; }
+      .step-card { flex-direction:column; gap:.9rem; padding:1.6rem; }
+      .step-card .btn { display:block; width:100%; }
+      .tool-grid, .book-grid { grid-template-columns:1fr; }
+      .blc-band, .winners { padding:2.25rem 1.6rem; border-radius:16px; }
+      .affil { flex-direction:column; align-items:flex-start; }
+      .affil .btn { width:100%; }
+      .closing { flex-direction:column; gap:1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ 1. HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="hero-eyebrow hero-anim">The Bootstrap MBA · Founding Member</span>
+      <h1 class="hero-anim">You're in. <em>Welcome</em> to The Bootstrap MBA.</h1>
+      <p class="hero-sub hero-anim">The next cohort launches August 1. Your preparation starts today, and by the time we go live you'll already be moving.</p>
+      <span class="paid-chip hero-anim">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#10b981"/><path d="M4.5 8.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Payment confirmed through Nas.io. Your seat is secured.
+      </span>
+    </div>
+  </header>
+
+  <!-- ============ 2. WHAT HAPPENS NEXT ============ -->
+  <section class="sec">
+    <div class="wrap reveal">
+      <span class="lbl">Here's the plan</span>
+      <h2 class="display">What just happened, and <em>what happens next</em></h2>
+      <p class="lede">You just claimed a founding seat in the August 1 cohort. Today, you get access to everything below and plug into the community. On June 20, the four Bootstrap Foundations release, built to get you ready before Day 1. Weekly updates land in your inbox until launch. And on August 1, the cohort goes live and we build together.</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">Today</div><div class="tl-what">Get access, join the community</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">June 20</div><div class="tl-what">Bootstrap Foundations release</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">Weekly</div><div class="tl-what">Updates in your inbox</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">August 1</div><div class="tl-what">The cohort goes live</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CHECKLIST ============ -->
+  <section class="sec" style="background:var(--off);">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="lbl">Start here</span>
+        <h2 class="display">Your onboarding checklist, <em>in order</em></h2>
+        <p class="lede" style="margin-bottom:2.5rem;">Five steps. Each one takes a few minutes. Do them top to bottom and you're fully onboarded today.</p>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Join the Nas.io community</h3>
+          <p>This is home base. Sessions, posts, replays, and announcements all live here. If you only do one thing right now, do this.</p>
+          <a class="btn" data-link="NAS_COMMUNITY_LINK" href="#">Join the community</a>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Join the WhatsApp group</h3>
+          <p>Daily accountability and cohort coordination happen here. It's where you'll find your people between sessions.</p>
+          <a class="btn" data-link="WHATSAPP_GROUP_LINK" href="#">Join the WhatsApp group</a>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Introduce yourself in the community</h3>
+          <p>Tell us who you are and what you're building. Keep it simple, use this:</p>
+          <div class="intro-tpl">
+            <strong>Name:</strong> &nbsp;·&nbsp; <strong>City:</strong> &nbsp;·&nbsp; <strong>My business (or the one I'm starting):</strong> &nbsp;·&nbsp; <strong>What I want out of August 1:</strong>
+          </div>
+          <a class="btn" data-link="NAS_INTRO_POST_LINK" href="#">Post your introduction</a>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Fill out the Member Directory form</h3>
+          <p>This is how Cris promotes you. Your offer goes into the member and alumni directory, so other members can find you, refer you, and buy from you. Two minutes now, visibility for the whole program.</p>
+          <a class="btn" data-link="DIRECTORY_FORM_LINK" href="#">Fill out the directory form</a>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Whitelist our email</h3>
+          <p>Weekly updates come until August 1, and the people who read them arrive prepared. Make sure they land in front of you:</p>
+          <div class="mail-steps">In Gmail: drag our first email to your <code>Primary</code> tab, then add <code data-sender>SENDER_EMAIL</code> to your contacts. That's it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. BLC RECORDINGS ============ -->
+  <section class="sec">
+    <div class="wrap reveal">
+      <div class="blc-band">
+        <span class="lbl">Your immediate access</span>
+        <h2>You don't wait for August 1. <em>You start tonight.</em></h2>
+        <p>Out of the box, you have the complete recordings of the Business Launch Challenge. Go through it now. Start building. Then when the live cohort begins, you'll feel the difference between watching recordings alone and building with a cohort around you. That contrast is the point.</p>
+        <a class="btn" data-link="BLC_COURSE_LINK" href="#">Open the Business Launch Challenge</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. AI TEAM & TOOLS ============ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="lbl">Your Strategy Suite</span>
+        <h2 class="display">Every tool, <em>ready when you are</em></h2>
+        <p class="lede">These are yours as a member. Each one does one job well. Open them, poke around, break nothing.</p>
+      </div>
+      <div class="tool-grid">
+        <div class="tool-card reveal" data-tag="Strategy Suite">
+          <h3>Avatar Builder</h3>
+          <p>Defines exactly who you sell to, in their words, not yours.</p>
+          <a class="btn" data-link="AVATAR_BUILDER_LINK" href="#">Open Avatar Builder</a>
+        </div>
+        <div class="tool-card reveal" data-tag="Strategy Suite">
+          <h3>Customer Value Journey Builder</h3>
+          <p>Maps how strangers become buyers, step by step, for your specific business.</p>
+          <a class="btn" data-link="CVJ_BUILDER_LINK" href="#">Open CVJ Builder</a>
+        </div>
+        <div class="tool-card reveal" data-tag="Strategy Suite">
+          <h3>Offer Stack Builder</h3>
+          <p>Assembles your offer so the value is obvious before you ever say the price.</p>
+          <a class="btn" data-link="OFFER_STACK_LINK" href="#">Open Offer Stack Builder</a>
+        </div>
+        <div class="tool-card reveal" data-tag="Strategy Suite">
+          <h3>Strategy Canvas</h3>
+          <p>Your whole business strategy on one page you can actually look at.</p>
+          <a class="btn" data-link="CANVAS_LINK" href="#">Open Strategy Canvas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. FOUNDATIONS ============ -->
+  <section class="sec" style="background:var(--off);">
+    <div class="wrap reveal">
+      <span class="lbl">Releasing June 20</span>
+      <h2 class="display">The Bootstrap <em>Foundations</em></h2>
+      <p class="lede">Four foundational trainings drop next Saturday, June 20, to prepare you for August 1 so you get the most out of every live session. Show up to these and August 1 will hit different.</p>
+      <div class="found-list">
+        <div class="found-item"><div><h3 data-foundation="1">Foundation One</h3><p>Releases June 20 · title announced in the community</p></div></div>
+        <div class="found-item"><div><h3 data-foundation="2">Foundation Two</h3><p>Releases June 20 · title announced in the community</p></div></div>
+        <div class="found-item"><div><h3 data-foundation="3">Foundation Three</h3><p>Releases June 20 · title announced in the community</p></div></div>
+        <div class="found-item"><div><h3 data-foundation="4">Foundation Four</h3><p>Releases June 20 · title announced in the community</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. THE BOOK ============ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="lbl">The book</span>
+        <h2 class="display">Get your copy of <em>The Bootstrap Entrepreneur</em></h2>
+      </div>
+      <div class="book-grid">
+        <div class="book-card free reveal">
+          <h3>Claim the digital copy <em>free</em></h3>
+          <p>Record a short video testimonial. Tell us why you joined, or what the workshop did for you. Two minutes, your phone camera is enough. The digital copy is yours, free.</p>
+          <a class="btn orange" data-link="TESTIMONIAL_RECORD_LINK" href="#">Record my testimonial</a>
+        </div>
+        <div class="book-card reveal">
+          <h3>Want the physical copy?</h3>
+          <p>Hold the real thing. Order the printed book and we ship it to you.</p>
+          <a class="btn" data-link="BOOK_CHECKOUT_LINK" href="#">Order the physical book</a>
+        </div>
+      </div>
+      <p class="reveal" style="text-align:center; margin-top:1.5rem; font-size:.9rem; color:var(--mid);">Prefer Kindle? <a data-link="BOOK_AMAZON_LINK" href="#" style="color:var(--orange); font-weight:600; text-decoration:none;">Get the digital copy on Amazon</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. AFFILIATE ============ -->
+  <section class="sec" style="padding:3.25rem 0;">
+    <div class="wrap reveal">
+      <div class="affil">
+        <div>
+          <h3>Want to earn as an affiliate?</h3>
+          <p>Project Gateway is opening its affiliate program soon. Get on the early-access list now and you'll be first in line when it goes live. Completely optional.</p>
+        </div>
+        <a class="btn" data-link="AFFILIATE_LINK" href="#">Get early access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WINNERS ============ -->
+  <section class="sec">
+    <div class="wrap reveal">
+      <div class="winners">
+        <span class="lbl">Workshop Winners</span>
+        <h2>Won a premium prize at the workshop? <em>Read this.</em></h2>
+        <p>Cris will personally reach out around Monday to schedule your onboarding call. That call is where your head start begins, and where we start delivering everything you won. Keep an eye on the email and number you registered with.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. FAQ ============ -->
+  <section class="sec" style="background:var(--off);">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="lbl">Questions</span>
+        <h2 class="display">Things you might be <em>wondering</em></h2>
+      </div>
+      <div class="reveal" style="margin-top:2rem;">
+        <details class="faq-item">
+          <summary>If it's self-paced, why is there a cohort?</summary>
+          <div class="faq-a">You can absolutely learn at your own pace. Everything is recorded and yours to keep. But here's the honest truth: most people who buy programs alone never finish them. The cohort exists so you have coaching, community, and people moving beside you. Self-paced gets you the material. The cohort gets you launched.</div>
+        </details>
+        <details class="faq-item">
+          <summary>When does everything start?</summary>
+          <div class="faq-a">Today you get access and plug into the community. On June 20, the four Bootstrap Foundations release. On August 1, the cohort goes live.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What do I have access to right now?</summary>
+          <div class="faq-a">The complete Business Launch Challenge recordings, the Nas.io community, the WhatsApp group, and every bot and tool listed above. All of it is live for you today.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How will I hear from you?</summary>
+          <div class="faq-a">Weekly email updates until August 1, plus daily life inside the community. That's exactly why whitelisting our email matters: the people who read the updates arrive prepared.</div>
+        </details>
+        <details class="faq-item">
+          <summary>I paid but haven't received anything.</summary>
+          <div class="faq-a">First, check the inbox of the email you used at Nas.io checkout, including spam and promotions. Still nothing? Message us inside the community, or reach the team at <span data-support>SUPPORT_CONTACT</span>. We'll sort it out fast.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. CLOSING NOTE ============ -->
+  <section class="sec">
+    <div class="wrap reveal">
+      <div class="closing">
+        <img class="closing-photo" src="/assets/brand/cris-danang-stage.jpg" alt="Cris Vinson" onerror="this.style.display='none'">
+        <div class="closing-note">
+          <p>I'm glad you bet on yourself today. The single best thing you can do right now is the checklist above, starting with the community. Everything else builds from there. I'll see you inside today, and I'll see you live on August 1.</p>
+          <span class="sig">— Cris</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap"><strong>The Bootstrap MBA</strong> · Build an AI-fluent, human-designed company</div>
+  </footer>
+
+  <script>
+    // ====== LINKS CONFIG — Cris fills these in. Any value left as a {{PLACEHOLDER}} renders as "link arriving". ======
+    const LINKS = {
+      // --- LIVE ---
+      NAS_COMMUNITY_LINK:      'https://nas.com/businesslaunchcommunity/home',
+      WHATSAPP_GROUP_LINK:     'https://chat.whatsapp.com/BK1qASSopkq587K0qcxXMa?s=hd&p=i&ilr=0',
+      NAS_INTRO_POST_LINK:     'https://nas.com/businesslaunchcommunity/feed/izor',
+      AVATAR_BUILDER_LINK:     'https://bonuses.crisvinson.com/avatar',
+      CVJ_BUILDER_LINK:        'https://bonuses.crisvinson.com/cvj',
+      OFFER_STACK_LINK:        'https://bonuses.crisvinson.com/tools',
+      CANVAS_LINK:             'https://bonuses.crisvinson.com/canvas/build',
+      TESTIMONIAL_RECORD_LINK: 'https://connect.crisvinson.com/reputation/video-collectors/widget/6a2adc8bcb3abee56d5bf7fc?locationId=SK6o7vkdwpLbqnDOlEr1',
+      BOOK_CHECKOUT_LINK:      'https://nas.com/businesslaunchcommunity/physical-products/the-bootstrap-entrepreneur-guide',
+      BOOK_AMAZON_LINK:        'https://www.amazon.com/dp/B0H1Y9X75J',
+      AFFILIATE_LINK:          'https://nas.com/businesslaunchcommunity/forms/get-early-access-to-project-gateway',
+      // --- BLC course: GHL ADMIN/editor URL. Members likely need the client-portal membership URL. Confirm. ---
+      BLC_COURSE_LINK:         'https://automation.civy.io/v2/location/SK6o7vkdwpLbqnDOlEr1/memberships/courses/products/f48ad888-1bc7-4fbb-a260-b2a632b5b7bd',
+      // --- STILL NEEDED ---
+      DIRECTORY_FORM_LINK:     '{{DIRECTORY_FORM_LINK}}'      // member directory form not yet provided
+    };
+    const SENDER_EMAIL   = '{{SENDER_EMAIL}}';
+    const SUPPORT_CONTACT = '{{SUPPORT_CONTACT}}';
+    // Foundations titles: set to four strings to replace the placeholders, or leave null.
+    const FOUNDATIONS = null; // e.g. ['Title one','Title two','Title three','Title four']
+
+    const isSet = v => v && !/^\{\{.*\}\}$/.test(v);
+
+    document.querySelectorAll('[data-link]').forEach(a => {
+      const v = LINKS[a.dataset.link];
+      if (isSet(v)) { a.href = v; a.target = '_blank'; a.rel = 'noopener'; }
+      else {
+        a.classList.add('pending');
+        const note = document.createElement('span');
+        note.className = 'btn-note';
+        note.textContent = 'Your access link is on its way. Check the community for the live link.';
+        a.insertAdjacentElement('afterend', note);
+      }
+    });
+    document.querySelectorAll('[data-sender]').forEach(el => { el.textContent = isSet(SENDER_EMAIL) ? SENDER_EMAIL : 'our email address (announced in the community)'; });
+    document.querySelectorAll('[data-support]').forEach(el => { el.textContent = isSet(SUPPORT_CONTACT) ? SUPPORT_CONTACT : 'the team inside the community'; });
+    if (Array.isArray(FOUNDATIONS)) document.querySelectorAll('[data-foundation]').forEach(el => {
+      const t = FOUNDATIONS[+el.dataset.foundation - 1];
+      if (t) { el.textContent = t; el.parentElement.querySelector('p').remove(); }
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+  <!-- VISUAL EDITOR — local only, never commit to GitHub -->
+  <script>if(location.search.includes('edit')){const s=document.createElement('script');s.src='editor.js';document.body.appendChild(s);}</script>
+</body>
+</html>
