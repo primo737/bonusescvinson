@@ -10,54 +10,151 @@
     {
       "source": "/assets/photos/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/assets/brand/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/styles.css",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*).html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(auth|reset-password|webinar|vsl|launch-os|tools|affiliate-swipe-file|affiliate-toolkit|avatar|offer|cvj|admin|terms-and-conditions|privacy-policy|cookies-policy|gdpr-compliance|ccpa|creator-spotlight|research|plf)",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/$1"
+    },
+    {
+      "source": "/canvas",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/canvas"
+    },
+    {
+      "source": "/canvas/:path*",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/canvas/:path*"
+    },
+    {
+      "source": "/funnel",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/funnel"
+    },
+    {
+      "source": "/funnel/:path*",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/funnel/:path*"
+    },
+    {
+      "source": "/blc-map.html",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/blc-map.html"
+    },
+    {
+      "source": "/funnel-u-kb.json",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/funnel-u-kb.json"
+    },
+    {
+      "source": "/og-webinar.jpg",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/og-webinar.jpg"
+    },
+    {
+      "source": "/placeholder.svg",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/placeholder.svg"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/favicon.ico"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "https://ghlvsnas-0df3f55e.vercel.app/assets/:path*"
     }
   ]
 }
